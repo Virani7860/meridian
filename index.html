@@ -14,15 +14,15 @@
 <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/4.4.1/chart.umd.js"></script>
 <style>
 :root{
-  --black:#080a0f;--bg0:#0c0f18;--bg1:#111520;--bg2:#161b28;--bg3:#1c2235;--bg4:#222840;
-  --line:rgba(255,255,255,0.06);--line2:rgba(255,255,255,0.11);--line3:rgba(255,255,255,0.18);
-  --text0:#f0f3fa;--text1:#b8c0d4;--text2:#6e7a96;--text3:#3d4560;
-  --amber:#e8a020;--amber2:#f5bc50;--amber-dim:#2a1e06;
-  --green:#1db87a;--green-dim:#051a10;
-  --red:#e8304a;--red-dim:#200810;
-  --blue:#2d7ef5;--blue-dim:#071530;--teal:#16c4b0;
-  --mono:'IBM Plex Mono',monospace;--sans:'IBM Plex Sans',sans-serif;--display:'Bebas Neue',cursive;
-  --safe-bottom: env(safe-area-inset-bottom, 0px);
+--black:#080a0f;--bg0:#0c0f18;--bg1:#111520;--bg2:#161b28;--bg3:#1c2235;--bg4:#222840;
+--line:rgba(255,255,255,0.06);--line2:rgba(255,255,255,0.11);--line3:rgba(255,255,255,0.18);
+--text0:#f0f3fa;--text1:#b8c0d4;--text2:#6e7a96;--text3:#3d4560;
+--amber:#e8a020;--amber2:#f5bc50;--amber-dim:#2a1e06;
+--green:#1db87a;--green-dim:#051a10;
+--red:#e8304a;--red-dim:#200810;
+--blue:#2d7ef5;--blue-dim:#071530;--teal:#16c4b0;
+--mono:'IBM Plex Mono',monospace;--sans:'IBM Plex Sans',sans-serif;--display:'Bebas Neue',cursive;
+--safe-bottom: env(safe-area-inset-bottom, 0px);
 }
 *{margin:0;padding:0;box-sizing:border-box;-webkit-tap-highlight-color:transparent;}
 html,body{height:100%;background:var(--black);color:var(--text0);font-family:var(--sans);overflow:hidden;}
@@ -32,11 +32,7 @@ input,select,textarea{font-family:var(--mono);}
 ::-webkit-scrollbar-track{background:transparent;}
 ::-webkit-scrollbar-thumb{background:var(--bg4);border-radius:2px;}
 body::before{content:'';position:fixed;inset:0;background-image:url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='1'/%3E%3C/svg%3E");opacity:0.025;pointer-events:none;z-index:0;}
-
-/* ═══ LAYOUT ═══ */
 .shell{display:grid;grid-template-columns:64px 1fr;height:100vh;position:relative;z-index:1;}
-
-/* ═══ DESKTOP RAIL ═══ */
 .rail{background:var(--bg0);border-right:1px solid var(--line);display:flex;flex-direction:column;align-items:center;padding:0;position:relative;z-index:10;}
 .rail-logo{width:64px;height:64px;display:flex;align-items:center;justify-content:center;border-bottom:1px solid var(--line);font-family:var(--display);font-size:22px;color:var(--amber);letter-spacing:1px;flex-shrink:0;}
 .rail-items{display:flex;flex-direction:column;align-items:center;gap:4px;padding:12px 0;flex:1;}
@@ -46,19 +42,13 @@ body::before{content:'';position:fixed;inset:0;background-image:url("data:image/
 .rail-btn.active{background:var(--amber-dim);color:var(--amber);}
 .rail-btn.active::before{content:'';position:absolute;left:0;top:50%;transform:translateY(-50%);width:2px;height:24px;background:var(--amber);border-radius:0 2px 2px 0;}
 .rail-bottom{padding:12px 0;border-top:1px solid var(--line);display:flex;flex-direction:column;align-items:center;gap:4px;}
-
-/* ═══ MAIN ═══ */
 .main{display:flex;flex-direction:column;overflow:hidden;}
-
-/* ═══ TOPBAR ═══ */
 .topbar{display:flex;align-items:center;justify-content:space-between;padding:0 20px;height:52px;border-bottom:1px solid var(--line);background:var(--bg0);flex-shrink:0;}
 .topbar-left{display:flex;align-items:baseline;gap:12px;}
 .page-id{font-family:var(--display);font-size:22px;color:var(--text0);letter-spacing:2px;}
 .page-sub{font-size:10px;color:var(--text2);font-family:var(--mono);letter-spacing:.5px;}
 .topbar-right{display:flex;align-items:center;gap:8px;}
 .topbar-tag{font-family:var(--mono);font-size:10px;letter-spacing:1px;padding:3px 10px;border:1px solid var(--amber);color:var(--amber);border-radius:2px;text-transform:uppercase;}
-
-/* ═══ TICKER ═══ */
 .ticker{height:28px;background:var(--bg1);border-bottom:1px solid var(--line);display:flex;align-items:center;overflow:hidden;flex-shrink:0;position:relative;}
 .ticker::before,.ticker::after{content:'';position:absolute;top:0;bottom:0;width:30px;z-index:2;}
 .ticker::before{left:0;background:linear-gradient(to right,var(--bg1),transparent);}
@@ -70,26 +60,18 @@ body::before{content:'';position:fixed;inset:0;background-image:url("data:image/
 .tick-price{color:var(--text0);}
 .tick-chg.up{color:var(--green);}
 .tick-chg.dn{color:var(--red);}
-
-/* ═══ CONTENT ═══ */
 .content{flex:1;overflow-y:auto;overflow-x:hidden;padding:20px;}
 .view{display:none;}
 .view.active{display:block;}
-
-/* ═══ GRID ═══ */
 .g2{display:grid;grid-template-columns:1fr 1fr;gap:14px;margin-bottom:14px;}
 .g3{display:grid;grid-template-columns:1fr 1fr 1fr;gap:14px;margin-bottom:14px;}
 .g4{display:grid;grid-template-columns:repeat(4,1fr);gap:12px;margin-bottom:14px;}
 .g65{display:grid;grid-template-columns:1.7fr 1fr;gap:14px;margin-bottom:14px;}
-
-/* ═══ PANEL ═══ */
 .panel{background:var(--bg1);border:1px solid var(--line);border-radius:4px;position:relative;overflow:hidden;}
 .panel::before{content:'';position:absolute;top:0;left:0;right:0;height:1px;background:linear-gradient(to right,transparent,var(--amber),transparent);opacity:.35;}
 .panel-head{display:flex;align-items:center;justify-content:space-between;padding:10px 14px;border-bottom:1px solid var(--line);}
 .panel-title{font-size:9px;font-weight:600;letter-spacing:2px;text-transform:uppercase;color:var(--text2);font-family:var(--mono);}
 .panel-body{padding:14px;}
-
-/* ═══ KPI ═══ */
 .kpi{background:var(--bg1);border:1px solid var(--line);border-radius:4px;padding:16px 18px;position:relative;overflow:hidden;}
 .kpi::after{content:'';position:absolute;bottom:0;left:0;right:0;height:2px;background:var(--kpi-color,var(--amber));opacity:.6;}
 .kpi-label{font-size:9px;letter-spacing:2px;text-transform:uppercase;color:var(--text2);font-family:var(--mono);margin-bottom:8px;}
@@ -98,8 +80,6 @@ body::before{content:'';position:fixed;inset:0;background-image:url("data:image/
 .kpi-badge{display:inline-flex;align-items:center;gap:4px;font-size:10px;font-family:var(--mono);padding:2px 7px;border-radius:2px;margin-top:4px;}
 .up-badge{background:var(--green-dim);color:var(--green);}
 .dn-badge{background:var(--red-dim);color:var(--red);}
-
-/* ═══ TABLE ═══ */
 .bb-table{width:100%;border-collapse:collapse;font-size:12px;}
 .bb-table th{padding:8px 12px;text-align:left;font-size:9px;letter-spacing:1.5px;text-transform:uppercase;color:var(--text3);font-family:var(--mono);font-weight:400;border-bottom:1px solid var(--line2);position:sticky;top:0;background:var(--bg1);}
 .bb-table td{padding:9px 12px;border-bottom:1px solid var(--line);color:var(--text1);}
@@ -110,15 +90,11 @@ body::before{content:'';position:fixed;inset:0;background-image:url("data:image/
 .up{color:var(--green);}
 .dn{color:var(--red);}
 .neu{color:var(--text2);}
-
-/* ═══ CHIP ═══ */
 .chip{font-size:9px;font-family:var(--mono);letter-spacing:.5px;padding:2px 6px;border-radius:2px;font-weight:500;display:inline-block;}
 .chip-a{background:rgba(30,184,122,.15);color:var(--green);}
 .chip-b{background:rgba(45,126,245,.15);color:#5096ff;}
 .chip-c{background:rgba(232,160,32,.15);color:var(--amber);}
 .chip-d{background:rgba(232,48,74,.15);color:var(--red);}
-
-/* ═══ INPUTS ═══ */
 .bb-input{background:var(--bg3);border:1px solid var(--line2);border-radius:3px;color:var(--text0);font-family:var(--mono);font-size:12px;padding:8px 12px;outline:none;width:100%;transition:border-color .15s;}
 .bb-input:focus{border-color:var(--amber);}
 .bb-select{background:var(--bg3);border:1px solid var(--line2);border-radius:3px;color:var(--text0);font-family:var(--mono);font-size:12px;padding:8px 12px;outline:none;transition:border-color .15s;cursor:pointer;width:100%;}
@@ -127,8 +103,6 @@ body::before{content:'';position:fixed;inset:0;background-image:url("data:image/
 .form-group{display:flex;flex-direction:column;gap:4px;margin-bottom:12px;}
 .form-row{display:grid;grid-template-columns:1fr 1fr;gap:10px;}
 .form-row3{display:grid;grid-template-columns:1fr 1fr 1fr;gap:10px;}
-
-/* ═══ BUTTONS ═══ */
 .btn{padding:8px 16px;border-radius:3px;font-size:11px;font-family:var(--mono);letter-spacing:.5px;font-weight:500;border:1px solid var(--line2);background:var(--bg3);color:var(--text1);transition:all .15s;text-transform:uppercase;}
 .btn:hover{border-color:var(--line3);color:var(--text0);}
 .btn-amber{border-color:var(--amber);background:var(--amber-dim);color:var(--amber);}
@@ -139,20 +113,14 @@ body::before{content:'';position:fixed;inset:0;background-image:url("data:image/
 .btn-red:hover{background:var(--red);color:var(--black);}
 .btn-sm{padding:5px 10px;font-size:10px;}
 .btn-xs{padding:3px 8px;font-size:9px;}
-
-/* ═══ PROGRESS ═══ */
 .progress{height:3px;background:var(--bg4);border-radius:1px;overflow:hidden;margin-top:4px;}
 .progress-fill{height:100%;border-radius:1px;transition:width .6s cubic-bezier(.4,0,.2,1);}
-
-/* ═══ MODAL ═══ */
 .overlay{display:none;position:fixed;inset:0;background:rgba(8,10,15,.88);z-index:500;align-items:center;justify-content:center;backdrop-filter:blur(6px);padding:16px;}
 .overlay.open{display:flex;}
 .modal{background:var(--bg2);border:1px solid var(--line2);border-radius:4px;padding:24px;width:480px;max-width:100%;max-height:90vh;overflow-y:auto;position:relative;}
 .modal::before{content:'';position:absolute;top:0;left:0;right:0;height:1px;background:var(--amber);opacity:.6;}
 .modal-title{font-family:var(--display);font-size:20px;letter-spacing:2px;margin-bottom:18px;color:var(--amber);}
 .modal-footer{display:flex;justify-content:flex-end;gap:10px;margin-top:18px;padding-top:14px;border-top:1px solid var(--line);}
-
-/* ═══ LEGEND ═══ */
 .dl{list-style:none;}
 .dl li{display:flex;align-items:center;gap:8px;padding:5px 0;border-bottom:1px solid var(--line);font-size:11px;}
 .dl li:last-child{border-bottom:none;}
@@ -160,16 +128,12 @@ body::before{content:'';position:fixed;inset:0;background-image:url("data:image/
 .d-name{flex:1;color:var(--text1);font-family:var(--mono);font-size:10px;}
 .d-pct{color:var(--text0);font-family:var(--mono);font-size:11px;}
 .d-val{color:var(--text2);font-family:var(--mono);font-size:10px;min-width:65px;text-align:right;}
-
-/* ═══ GOAL CARD ═══ */
 .goal-card{background:var(--bg2);border:1px solid var(--line);border-radius:4px;padding:16px;margin-bottom:10px;position:relative;}
 .goal-name{font-family:var(--display);font-size:17px;letter-spacing:1px;margin-bottom:3px;}
 .goal-meta{font-size:10px;font-family:var(--mono);color:var(--text2);margin-bottom:10px;}
 .goal-bar{height:5px;background:var(--bg4);border-radius:2px;overflow:hidden;margin:8px 0 5px;}
 .goal-fill{height:100%;border-radius:2px;transition:width .8s cubic-bezier(.4,0,.2,1);}
 .goal-nums{display:flex;justify-content:space-between;font-size:10px;font-family:var(--mono);color:var(--text2);}
-
-/* ═══ CALC ═══ */
 .calc-result{background:var(--bg0);border:1px solid var(--amber);border-radius:4px;padding:16px;margin-top:14px;}
 .calc-result-title{font-size:9px;letter-spacing:2px;text-transform:uppercase;color:var(--amber);font-family:var(--mono);margin-bottom:10px;}
 .calc-number{font-family:var(--display);font-size:34px;letter-spacing:2px;color:var(--text0);}
@@ -178,8 +142,6 @@ body::before{content:'';position:fixed;inset:0;background-image:url("data:image/
 .calc-row .label{color:var(--text2);}
 input[type=range]{accent-color:var(--amber);width:100%;}
 .slider-label{display:flex;justify-content:space-between;font-family:var(--mono);font-size:9px;color:var(--text2);margin-top:3px;}
-
-/* ═══ TXN ═══ */
 .txn-item{display:flex;align-items:center;gap:10px;padding:10px 14px;border-bottom:1px solid var(--line);transition:background .1s;}
 .txn-item:hover{background:var(--bg2);}
 .txn-icon{width:30px;height:30px;border-radius:4px;display:flex;align-items:center;justify-content:center;font-size:13px;flex-shrink:0;}
@@ -189,13 +151,9 @@ input[type=range]{accent-color:var(--amber);width:100%;}
 .txn-amount{font-family:var(--mono);font-size:13px;font-weight:500;}
 .txn-del{background:none;border:none;color:var(--text3);font-size:14px;padding:4px;border-radius:3px;transition:color .15s;}
 .txn-del:hover{color:var(--red);}
-
-/* ═══ EMPTY STATE ═══ */
 .empty{display:flex;flex-direction:column;align-items:center;justify-content:center;padding:40px 20px;text-align:center;}
 .empty-icon{font-size:32px;margin-bottom:10px;opacity:.4;}
 .empty-text{font-size:12px;color:var(--text2);font-family:var(--mono);}
-
-/* ═══ DATA MANAGER ═══ */
 .data-section{margin-bottom:20px;}
 .data-section-title{font-size:9px;letter-spacing:2px;text-transform:uppercase;color:var(--amber);font-family:var(--mono);margin-bottom:10px;display:flex;align-items:center;gap:8px;}
 .data-section-title::after{content:'';flex:1;height:1px;background:var(--amber-dim);}
@@ -203,442 +161,418 @@ input[type=range]{accent-color:var(--amber);width:100%;}
 .import-zone:hover{border-color:var(--amber);}
 .import-zone input{display:none;}
 .import-zone p{font-size:11px;color:var(--text2);font-family:var(--mono);margin-top:6px;}
-
-/* ═══ TOAST ═══ */
 .toast{position:fixed;bottom:calc(20px + var(--safe-bottom));left:50%;transform:translateX(-50%) translateY(80px);background:var(--bg3);border:1px solid var(--line2);border-radius:4px;padding:10px 20px;font-size:12px;font-family:var(--mono);z-index:999;transition:transform .3s cubic-bezier(.4,0,.2,1);white-space:nowrap;}
 .toast.show{transform:translateX(-50%) translateY(0);}
 .toast.success{border-color:var(--green);color:var(--green);}
 .toast.error{border-color:var(--red);color:var(--red);}
-
-/* ═══ MOBILE NAV ═══ */
 .mobile-nav{display:none;position:fixed;bottom:0;left:0;right:0;z-index:200;background:var(--bg0);border-top:1px solid var(--line);padding:8px 0 calc(8px + var(--safe-bottom));justify-content:space-around;}
 .mob-btn{display:flex;flex-direction:column;align-items:center;gap:3px;background:none;border:none;color:var(--text2);font-size:8px;letter-spacing:.5px;text-transform:uppercase;padding:4px 12px;border-radius:8px;transition:color .2s;}
 .mob-btn svg{width:20px;height:20px;stroke-width:1.5;}
 .mob-btn.active{color:var(--amber);}
-
-/* ═══ ANIM ═══ */
 @keyframes fadeUp{from{opacity:0;transform:translateY(8px)}to{opacity:1;transform:translateY(0)}}
 .view.active .panel,.view.active .kpi,.view.active .goal-card{animation:fadeUp .22s ease both;}
 .view.active .kpi:nth-child(2){animation-delay:.04s;}
 .view.active .kpi:nth-child(3){animation-delay:.08s;}
 .view.active .kpi:nth-child(4){animation-delay:.12s;}
-
-/* ═══ RESPONSIVE ═══ */
 @media(max-width:768px){
-  .shell{grid-template-columns:1fr;}
-  .rail{display:none;}
-  .mobile-nav{display:flex;}
-  .content{padding:14px 14px calc(80px + var(--safe-bottom)) 14px;}
-  .g4{grid-template-columns:1fr 1fr;}
-  .g3{grid-template-columns:1fr 1fr;}
-  .g65,.g2{grid-template-columns:1fr;}
-  .topbar{padding:0 14px;height:48px;}
-  .page-id{font-size:18px;}
-  .page-sub{display:none;}
-  .kpi-value{font-size:22px;}
-  .ticker{display:none;}
-  .form-row,.form-row3{grid-template-columns:1fr;}
+.shell{grid-template-columns:1fr;}
+.rail{display:none;}
+.mobile-nav{display:flex;}
+.content{padding:14px 14px calc(80px + var(--safe-bottom)) 14px;}
+.g4{grid-template-columns:1fr 1fr;}
+.g3{grid-template-columns:1fr 1fr;}
+.g65,.g2{grid-template-columns:1fr;}
+.topbar{padding:0 14px;height:48px;}
+.page-id{font-size:18px;}
+.page-sub{display:none;}
+.kpi-value{font-size:22px;}
+.ticker{display:none;}
+.form-row,.form-row3{grid-template-columns:1fr;}
 }
 @media(min-width:769px){
-  .mobile-nav{display:none;}
+.mobile-nav{display:none;}
 }
 </style>
 </head>
 <body>
-
 <div class="shell">
-<!-- ═══ DESKTOP RAIL ═══ -->
 <nav class="rail">
-  <div class="rail-logo">M</div>
-  <div class="rail-items">
-    <button class="rail-btn active" onclick="nav('networth')">
-      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor"><polyline points="22 12 18 12 15 21 9 3 6 12 2 12"/></svg>NET
-    </button>
-    <button class="rail-btn" onclick="nav('portfolio')">
-      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor"><rect x="2" y="3" width="20" height="14" rx="2"/><line x1="8" y1="21" x2="16" y2="21"/><line x1="12" y1="17" x2="12" y2="21"/></svg>PORT
-    </button>
-    <button class="rail-btn" onclick="nav('expenses')">
-      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor"><line x1="12" y1="1" x2="12" y2="23"/><path d="M17 5H9.5a3.5 3.5 0 1 0 0 7h5a3.5 3.5 0 1 1 0 7H6"/></svg>EXP
-    </button>
-    <button class="rail-btn" onclick="nav('goals')">
-      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor"><circle cx="12" cy="12" r="10"/><circle cx="12" cy="12" r="6"/><circle cx="12" cy="12" r="2"/></svg>GOALS
-    </button>
-    <button class="rail-btn" onclick="nav('calculator')">
-      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor"><rect x="4" y="2" width="16" height="20" rx="2"/><line x1="8" y1="6" x2="16" y2="6"/><line x1="8" y1="10" x2="16" y2="10"/><line x1="8" y1="14" x2="10" y2="14"/><line x1="14" y1="14" x2="16" y2="14"/><line x1="8" y1="18" x2="10" y2="18"/><line x1="14" y1="18" x2="16" y2="18"/></svg>CALC
-    </button>
-  </div>
-  <div class="rail-bottom">
-    <button class="rail-btn" onclick="nav('data')" title="Import / Export">
-      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="17 8 12 3 7 8"/><line x1="12" y1="3" x2="12" y2="15"/></svg>DATA
-    </button>
-  </div>
+<div class="rail-logo">M</div>
+<div class="rail-items">
+<button class="rail-btn active" onclick="nav('networth')">
+<svg viewBox="0 0 24 24" fill="none" stroke="currentColor"><polyline points="22 12 18 12 15 21 9 3 6 12 2 12"/></svg>NET
+</button>
+<button class="rail-btn" onclick="nav('portfolio')">
+<svg viewBox="0 0 24 24" fill="none" stroke="currentColor"><rect x="2" y="3" width="20" height="14" rx="2"/><line x1="8" y1="21" x2="16" y2="21"/><line x1="12" y1="17" x2="12" y2="21"/></svg>PORT
+</button>
+<button class="rail-btn" onclick="nav('expenses')">
+<svg viewBox="0 0 24 24" fill="none" stroke="currentColor"><line x1="12" y1="1" x2="12" y2="23"/><path d="M17 5H9.5a3.5 3.5 0 1 0 0 7h5a3.5 3.5 0 1 1 0 7H6"/></svg>EXP
+</button>
+<button class="rail-btn" onclick="nav('goals')">
+<svg viewBox="0 0 24 24" fill="none" stroke="currentColor"><circle cx="12" cy="12" r="10"/><circle cx="12" cy="12" r="6"/><circle cx="12" cy="12" r="2"/></svg>GOALS
+</button>
+<button class="rail-btn" onclick="nav('calculator')">
+<svg viewBox="0 0 24 24" fill="none" stroke="currentColor"><rect x="4" y="2" width="16" height="20" rx="2"/><line x1="8" y1="6" x2="16" y2="6"/><line x1="8" y1="10" x2="16" y2="10"/><line x1="8" y1="14" x2="10" y2="14"/><line x1="14" y1="14" x2="16" y2="14"/><line x1="8" y1="18" x2="10" y2="18"/><line x1="14" y1="18" x2="16" y2="18"/></svg>CALC
+</button>
+</div>
+<div class="rail-bottom">
+<button class="rail-btn" onclick="nav('data')" title="Import / Export">
+<svg viewBox="0 0 24 24" fill="none" stroke="currentColor"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="17 8 12 3 7 8"/><line x1="12" y1="3" x2="12" y2="15"/></svg>DATA
+</button>
+</div>
 </nav>
-
-<!-- ═══ MAIN ═══ -->
 <div class="main">
-  <div class="topbar">
-    <div class="topbar-left">
-      <span class="page-id" id="page-title">NET WORTH</span>
-      <span class="page-sub" id="page-sub">PERSONAL DASHBOARD</span>
-    </div>
-    <div class="topbar-right">
-      <span class="topbar-tag" id="topbar-date"></span>
-    </div>
-  </div>
-  <div class="ticker"><div class="ticker-track" id="ticker"></div></div>
+<div class="topbar">
+<div class="topbar-left">
+<span class="page-id" id="page-title">NET WORTH</span>
+<span class="page-sub" id="page-sub">PERSONAL DASHBOARD</span>
+</div>
+<div class="topbar-right">
+<span class="topbar-tag" id="topbar-date"></span>
+</div>
+</div>
+<div class="ticker"><div class="ticker-track" id="ticker"></div></div>
+<div class="content">
 
-  <div class="content">
+<!-- NET WORTH -->
+<div class="view active" id="view-networth">
+<div class="g4">
+<div class="kpi" style="--kpi-color:var(--amber)"><div class="kpi-label">Net Worth</div><div class="kpi-value" id="nw-total">&#8377;0</div><div class="kpi-sub">Assets &minus; Liabilities</div></div>
+<div class="kpi" style="--kpi-color:var(--green)"><div class="kpi-label">Total Assets</div><div class="kpi-value" id="nw-assets">&#8377;0</div><div class="kpi-sub">All holdings</div></div>
+<div class="kpi" style="--kpi-color:var(--red)"><div class="kpi-label">Liabilities</div><div class="kpi-value" id="nw-liab">&#8377;0</div><div class="kpi-sub">Loans &amp; dues</div></div>
+<div class="kpi" style="--kpi-color:var(--blue)"><div class="kpi-label">Monthly Savings</div><div class="kpi-value" id="nw-save">&#8377;0</div><div class="kpi-sub">Income &minus; Expenses</div></div>
+</div>
+<div class="g65">
+<div class="panel">
+<div class="panel-head"><span class="panel-title">Asset Composition</span><button class="btn btn-sm btn-amber" onclick="openModal('assetModal')">+ Add</button></div>
+<div class="panel-body" style="position:relative;height:220px;"><canvas id="nwChart"></canvas></div>
+<ul class="dl" style="padding:0 14px 12px;" id="nw-legend"></ul>
+</div>
+<div>
+<div class="panel" style="margin-bottom:14px;">
+<div class="panel-head"><span class="panel-title">Income &amp; Expenses</span></div>
+<div class="panel-body">
+<div class="form-group"><label class="form-label">Monthly Salary / Business (&#8377;)</label><input class="bb-input" id="inc-sal" type="number" placeholder="0" oninput="saveProfile();renderNW()"></div>
+<div class="form-group"><label class="form-label">Other Income (&#8377;)</label><input class="bb-input" id="inc-other" type="number" placeholder="0" oninput="saveProfile();renderNW()"></div>
+<div class="form-group"><label class="form-label">Fixed Expenses (&#8377;)</label><input class="bb-input" id="exp-fix" type="number" placeholder="0" oninput="saveProfile();renderNW()"></div>
+<div class="form-group"><label class="form-label">Variable Expenses (&#8377;)</label><input class="bb-input" id="exp-var" type="number" placeholder="0" oninput="saveProfile();renderNW()"></div>
+</div>
+</div>
+<div class="panel">
+<div class="panel-head"><span class="panel-title">Savings Rate</span></div>
+<div class="panel-body" style="display:flex;flex-direction:column;align-items:center;">
+<canvas id="gaugeCanvas" width="160" height="100" style="max-width:160px;"></canvas>
+<div style="text-align:center;margin-top:6px;"><div style="font-family:var(--display);font-size:26px;" id="gauge-text">0%</div><div style="font-size:10px;color:var(--text2);font-family:var(--mono);">of income saved</div></div>
+</div>
+</div>
+</div>
+</div>
+<div class="panel">
+<div class="panel-head"><span class="panel-title">All Assets &amp; Liabilities</span></div>
+<div style="max-height:260px;overflow-y:auto;">
+<table class="bb-table"><thead><tr><th>Name</th><th>Category</th><th>Type</th><th>Value</th><th></th></tr></thead><tbody id="asset-tbody"></tbody></table>
+</div>
+</div>
+</div>
 
-    <!-- ══ NET WORTH ══ -->
-    <div class="view active" id="view-networth">
-      <div class="g4">
-        <div class="kpi" style="--kpi-color:var(--amber)"><div class="kpi-label">Net Worth</div><div class="kpi-value" id="nw-total">₹0</div><div class="kpi-sub">Assets − Liabilities</div></div>
-        <div class="kpi" style="--kpi-color:var(--green)"><div class="kpi-label">Total Assets</div><div class="kpi-value" id="nw-assets">₹0</div><div class="kpi-sub">All holdings</div></div>
-        <div class="kpi" style="--kpi-color:var(--red)"><div class="kpi-label">Liabilities</div><div class="kpi-value" id="nw-liab">₹0</div><div class="kpi-sub">Loans & dues</div></div>
-        <div class="kpi" style="--kpi-color:var(--blue)"><div class="kpi-label">Monthly Savings</div><div class="kpi-value" id="nw-save">₹0</div><div class="kpi-sub">Income − Expenses</div></div>
-      </div>
-      <div class="g65">
-        <div class="panel">
-          <div class="panel-head"><span class="panel-title">Asset Composition</span><button class="btn btn-sm btn-amber" onclick="openModal('assetModal')">+ Add</button></div>
-          <div class="panel-body" style="position:relative;height:220px;"><canvas id="nwChart"></canvas></div>
-          <ul class="dl" style="padding:0 14px 12px;" id="nw-legend"></ul>
-        </div>
-        <div>
-          <div class="panel" style="margin-bottom:14px;">
-            <div class="panel-head"><span class="panel-title">Income & Expenses</span></div>
-            <div class="panel-body">
-              <div class="form-group"><label class="form-label">Monthly Salary / Business (₹)</label><input class="bb-input" id="inc-sal" type="number" placeholder="0" oninput="saveProfile();renderNW()"></div>
-              <div class="form-group"><label class="form-label">Other Income (₹)</label><input class="bb-input" id="inc-other" type="number" placeholder="0" oninput="saveProfile();renderNW()"></div>
-              <div class="form-group"><label class="form-label">Fixed Expenses (₹)</label><input class="bb-input" id="exp-fix" type="number" placeholder="0" oninput="saveProfile();renderNW()"></div>
-              <div class="form-group"><label class="form-label">Variable Expenses (₹)</label><input class="bb-input" id="exp-var" type="number" placeholder="0" oninput="saveProfile();renderNW()"></div>
-            </div>
-          </div>
-          <div class="panel">
-            <div class="panel-head"><span class="panel-title">Savings Rate</span></div>
-            <div class="panel-body" style="display:flex;flex-direction:column;align-items:center;">
-              <canvas id="gaugeCanvas" width="160" height="100" style="max-width:160px;"></canvas>
-              <div style="text-align:center;margin-top:6px;"><div style="font-family:var(--display);font-size:26px;" id="gauge-text">0%</div><div style="font-size:10px;color:var(--text2);font-family:var(--mono);">of income saved</div></div>
-            </div>
-          </div>
-        </div>
-      </div>
-      <div class="panel">
-        <div class="panel-head"><span class="panel-title">All Assets & Liabilities</span></div>
-        <div style="max-height:260px;overflow-y:auto;">
-          <table class="bb-table"><thead><tr><th>Name</th><th>Category</th><th>Type</th><th>Value</th><th></th></tr></thead><tbody id="asset-tbody"></tbody></table>
-        </div>
-      </div>
-    </div>
+<!-- PORTFOLIO -->
+<div class="view" id="view-portfolio">
+<div class="g4">
+<div class="kpi" style="--kpi-color:var(--amber)"><div class="kpi-label">Portfolio Value</div><div class="kpi-value" id="port-val">&#8377;0</div><div class="kpi-sub" id="port-pnl-sub">&mdash;</div></div>
+<div class="kpi" style="--kpi-color:var(--green)"><div class="kpi-label">Equity Return</div><div class="kpi-value" id="port-eq-ret">&mdash;</div><div class="kpi-sub" id="port-eq-inv">&mdash;</div></div>
+<div class="kpi" style="--kpi-color:var(--red)"><div class="kpi-label">MF Return</div><div class="kpi-value" id="port-mf-ret">&mdash;</div><div class="kpi-sub" id="port-mf-inv">&mdash;</div></div>
+<div class="kpi" style="--kpi-color:var(--blue)"><div class="kpi-label">Positions</div><div class="kpi-value" id="port-pos">0</div><div class="kpi-sub">Equity + MF</div></div>
+</div>
+<div class="g65">
+<div class="panel">
+<div class="panel-head">
+<span class="panel-title">Equity Holdings</span>
+<div style="display:flex;gap:8px;">
+<input class="bb-input" style="width:140px;padding:5px 8px;" placeholder="Search&hellip;" oninput="filterHoldings(this.value)">
+<button class="btn btn-sm btn-amber" onclick="openModal('holdingModal')">+ Add</button>
+</div>
+</div>
+<div style="max-height:360px;overflow-y:auto;"><table class="bb-table"><thead><tr><th>Symbol</th><th>Sector</th><th>Qty</th><th>Avg</th><th>LTP</th><th>P&amp;L</th><th>%</th><th></th></tr></thead><tbody id="holdings-tbody"></tbody></table></div>
+</div>
+<div class="panel">
+<div class="panel-head"><span class="panel-title">Sector Split</span></div>
+<div class="panel-body" style="position:relative;height:180px;"><canvas id="sectorChart"></canvas></div>
+<ul class="dl" style="padding:0 14px 12px;" id="sector-legend"></ul>
+</div>
+</div>
+<div class="g2">
+<div class="panel">
+<div class="panel-head"><span class="panel-title">Mutual Funds</span><button class="btn btn-sm btn-amber" onclick="openModal('mfModal')">+ Add</button></div>
+<div style="max-height:240px;overflow-y:auto;" id="mf-list"></div>
+</div>
+<div class="panel">
+<div class="panel-head"><span class="panel-title">Top Movers</span></div>
+<div style="max-height:240px;overflow-y:auto;"><table class="bb-table"><thead><tr><th>Symbol</th><th>P&amp;L%</th><th>P&amp;L &#8377;</th></tr></thead><tbody id="movers-tbody"></tbody></table></div>
+</div>
+</div>
+</div>
 
-    <!-- ══ PORTFOLIO ══ -->
-    <div class="view" id="view-portfolio">
-      <div class="g4">
-        <div class="kpi" style="--kpi-color:var(--amber)"><div class="kpi-label">Portfolio Value</div><div class="kpi-value" id="port-val">₹0</div><div class="kpi-sub" id="port-pnl-sub">—</div></div>
-        <div class="kpi" style="--kpi-color:var(--green)"><div class="kpi-label">Equity Return</div><div class="kpi-value" id="port-eq-ret">—</div><div class="kpi-sub" id="port-eq-inv">—</div></div>
-        <div class="kpi" style="--kpi-color:var(--red)"><div class="kpi-label">MF Return</div><div class="kpi-value" id="port-mf-ret">—</div><div class="kpi-sub" id="port-mf-inv">—</div></div>
-        <div class="kpi" style="--kpi-color:var(--blue)"><div class="kpi-label">Positions</div><div class="kpi-value" id="port-pos">0</div><div class="kpi-sub">Equity + MF</div></div>
-      </div>
-      <div class="g65">
-        <div class="panel">
-          <div class="panel-head">
-            <span class="panel-title">Equity Holdings</span>
-            <div style="display:flex;gap:8px;">
-              <input class="bb-input" style="width:140px;padding:5px 8px;" placeholder="Search…" oninput="filterHoldings(this.value)">
-              <button class="btn btn-sm btn-amber" onclick="openModal('holdingModal')">+ Add</button>
-            </div>
-          </div>
-          <div style="max-height:360px;overflow-y:auto;"><table class="bb-table"><thead><tr><th>Symbol</th><th>Sector</th><th>Qty</th><th>Avg</th><th>LTP</th><th>P&L</th><th>%</th><th></th></tr></thead><tbody id="holdings-tbody"></tbody></table></div>
-        </div>
-        <div class="panel">
-          <div class="panel-head"><span class="panel-title">Sector Split</span></div>
-          <div class="panel-body" style="position:relative;height:180px;"><canvas id="sectorChart"></canvas></div>
-          <ul class="dl" style="padding:0 14px 12px;" id="sector-legend"></ul>
-        </div>
-      </div>
-      <div class="g2">
-        <div class="panel">
-          <div class="panel-head"><span class="panel-title">Mutual Funds</span><button class="btn btn-sm btn-amber" onclick="openModal('mfModal')">+ Add</button></div>
-          <div style="max-height:240px;overflow-y:auto;" id="mf-list"></div>
-        </div>
-        <div class="panel">
-          <div class="panel-head"><span class="panel-title">Top Movers</span></div>
-          <div style="max-height:240px;overflow-y:auto;"><table class="bb-table"><thead><tr><th>Symbol</th><th>P&L%</th><th>P&L ₹</th></tr></thead><tbody id="movers-tbody"></tbody></table></div>
-        </div>
-      </div>
-    </div>
+<!-- EXPENSES -->
+<div class="view" id="view-expenses">
+<div class="g4">
+<div class="kpi" style="--kpi-color:var(--red)"><div class="kpi-label">This Month Spent</div><div class="kpi-value" id="exp-total">&#8377;0</div><div class="kpi-sub" id="exp-vs">of budget</div></div>
+<div class="kpi" style="--kpi-color:var(--amber)"><div class="kpi-label">Budget Left</div><div class="kpi-value" id="exp-left">&#8377;0</div><div class="kpi-sub" id="exp-days">days remaining</div></div>
+<div class="kpi" style="--kpi-color:var(--green)"><div class="kpi-label">Daily Avg Spend</div><div class="kpi-value" id="exp-daily">&#8377;0</div><div class="kpi-sub">Based on entries</div></div>
+<div class="kpi" style="--kpi-color:var(--blue)"><div class="kpi-label">Transactions</div><div class="kpi-value" id="exp-count">0</div><div class="kpi-sub">This month</div></div>
+</div>
+<div class="g65">
+<div class="panel">
+<div class="panel-head"><span class="panel-title">Transactions</span><button class="btn btn-sm btn-amber" onclick="openModal('txnModal')">+ Add</button></div>
+<div style="max-height:400px;overflow-y:auto;" id="txn-list"><div class="empty"><div class="empty-icon">&#128179;</div><div class="empty-text">No transactions yet.<br>Tap + Add to get started.</div></div></div>
+</div>
+<div>
+<div class="panel" style="margin-bottom:14px;">
+<div class="panel-head"><span class="panel-title">By Category</span></div>
+<div class="panel-body" id="cat-list"><div class="empty" style="padding:20px;"><div class="empty-text">Add transactions to see breakdown</div></div></div>
+</div>
+<div class="panel">
+<div class="panel-head"><span class="panel-title">Monthly Budget (&#8377;)</span></div>
+<div class="panel-body">
+<input class="bb-input" id="budget-inp" type="number" placeholder="e.g. 60000" oninput="S.budget=+this.value||0;saveData();renderExpenses()">
+<div style="position:relative;height:110px;margin-top:12px;"><canvas id="budgetDonut"></canvas></div>
+</div>
+</div>
+</div>
+</div>
+</div>
 
-    <!-- ══ EXPENSES ══ -->
-    <div class="view" id="view-expenses">
-      <div class="g4">
-        <div class="kpi" style="--kpi-color:var(--red)"><div class="kpi-label">This Month Spent</div><div class="kpi-value" id="exp-total">₹0</div><div class="kpi-sub" id="exp-vs">of budget</div></div>
-        <div class="kpi" style="--kpi-color:var(--amber)"><div class="kpi-label">Budget Left</div><div class="kpi-value" id="exp-left">₹0</div><div class="kpi-sub" id="exp-days">days remaining</div></div>
-        <div class="kpi" style="--kpi-color:var(--green)"><div class="kpi-label">Daily Avg Spend</div><div class="kpi-value" id="exp-daily">₹0</div><div class="kpi-sub">Based on entries</div></div>
-        <div class="kpi" style="--kpi-color:var(--blue)"><div class="kpi-label">Transactions</div><div class="kpi-value" id="exp-count">0</div><div class="kpi-sub">This month</div></div>
-      </div>
-      <div class="g65">
-        <div class="panel">
-          <div class="panel-head"><span class="panel-title">Transactions</span><button class="btn btn-sm btn-amber" onclick="openModal('txnModal')">+ Add</button></div>
-          <div style="max-height:400px;overflow-y:auto;" id="txn-list"><div class="empty"><div class="empty-icon">💳</div><div class="empty-text">No transactions yet.<br>Tap + Add to get started.</div></div></div>
-        </div>
-        <div>
-          <div class="panel" style="margin-bottom:14px;">
-            <div class="panel-head"><span class="panel-title">By Category</span></div>
-            <div class="panel-body" id="cat-list"><div class="empty" style="padding:20px;"><div class="empty-text">Add transactions to see breakdown</div></div></div>
-          </div>
-          <div class="panel">
-            <div class="panel-head"><span class="panel-title">Monthly Budget (₹)</span></div>
-            <div class="panel-body">
-              <input class="bb-input" id="budget-inp" type="number" placeholder="e.g. 60000" oninput="S.budget=+this.value||0;saveData();renderExpenses()">
-              <div style="position:relative;height:110px;margin-top:12px;"><canvas id="budgetDonut"></canvas></div>
-            </div>
-          </div>
-        </div>
-      </div>
-    </div>
+<!-- GOALS -->
+<div class="view" id="view-goals">
+<div class="g4">
+<div class="kpi" style="--kpi-color:var(--amber)"><div class="kpi-label">Active Goals</div><div class="kpi-value" id="g-count">0</div></div>
+<div class="kpi" style="--kpi-color:var(--green)"><div class="kpi-label">Total Target</div><div class="kpi-value" id="g-target">&#8377;0</div></div>
+<div class="kpi" style="--kpi-color:var(--blue)"><div class="kpi-label">Total Saved</div><div class="kpi-value" id="g-saved">&#8377;0</div></div>
+<div class="kpi" style="--kpi-color:var(--teal)"><div class="kpi-label">Monthly SIP</div><div class="kpi-value" id="g-sip">&#8377;0</div></div>
+</div>
+<div class="g65">
+<div>
+<div style="display:flex;align-items:center;justify-content:space-between;margin-bottom:12px;">
+<span style="font-family:var(--display);font-size:16px;letter-spacing:1px;">YOUR GOALS</span>
+<button class="btn btn-amber" onclick="openModal('goalModal')">+ New Goal</button>
+</div>
+<div id="goals-list"><div class="empty"><div class="empty-icon">&#127919;</div><div class="empty-text">No goals yet.<br>Add your first financial goal.</div></div></div>
+</div>
+<div>
+<div class="panel" style="margin-bottom:14px;">
+<div class="panel-head"><span class="panel-title">Active SIPs</span><button class="btn btn-sm" onclick="openModal('sipModal')">+ SIP</button></div>
+<div id="sip-list"><div class="empty" style="padding:20px;"><div class="empty-text">No SIPs added yet</div></div></div>
+</div>
+<div class="panel">
+<div class="panel-head"><span class="panel-title">Goals Progress</span></div>
+<div class="panel-body" style="position:relative;height:160px;"><canvas id="goalsChart"></canvas></div>
+</div>
+</div>
+</div>
+</div>
 
-    <!-- ══ GOALS ══ -->
-    <div class="view" id="view-goals">
-      <div class="g4">
-        <div class="kpi" style="--kpi-color:var(--amber)"><div class="kpi-label">Active Goals</div><div class="kpi-value" id="g-count">0</div></div>
-        <div class="kpi" style="--kpi-color:var(--green)"><div class="kpi-label">Total Target</div><div class="kpi-value" id="g-target">₹0</div></div>
-        <div class="kpi" style="--kpi-color:var(--blue)"><div class="kpi-label">Total Saved</div><div class="kpi-value" id="g-saved">₹0</div></div>
-        <div class="kpi" style="--kpi-color:var(--teal)"><div class="kpi-label">Monthly SIP</div><div class="kpi-value" id="g-sip">₹0</div></div>
-      </div>
-      <div class="g65">
-        <div>
-          <div style="display:flex;align-items:center;justify-content:space-between;margin-bottom:12px;">
-            <span style="font-family:var(--display);font-size:16px;letter-spacing:1px;">YOUR GOALS</span>
-            <button class="btn btn-amber" onclick="openModal('goalModal')">+ New Goal</button>
-          </div>
-          <div id="goals-list"><div class="empty"><div class="empty-icon">🎯</div><div class="empty-text">No goals yet.<br>Add your first financial goal.</div></div></div>
-        </div>
-        <div>
-          <div class="panel" style="margin-bottom:14px;">
-            <div class="panel-head"><span class="panel-title">Active SIPs</span><button class="btn btn-sm" onclick="openModal('sipModal')">+ SIP</button></div>
-            <div id="sip-list"><div class="empty" style="padding:20px;"><div class="empty-text">No SIPs added yet</div></div></div>
-          </div>
-          <div class="panel">
-            <div class="panel-head"><span class="panel-title">Goals Progress</span></div>
-            <div class="panel-body" style="position:relative;height:160px;"><canvas id="goalsChart"></canvas></div>
-          </div>
-        </div>
-      </div>
-    </div>
+<!-- CALCULATOR -->
+<div class="view" id="view-calculator">
+<div class="g2" style="margin-bottom:0;">
+<div class="panel">
+<div class="panel-head"><span class="panel-title">SIP Calculator</span></div>
+<div class="panel-body">
+<div class="form-group"><label class="form-label">Monthly SIP (&#8377;)</label><input class="bb-input" id="sip-amt" type="number" value="5000" oninput="calcSIP()"></div>
+<div class="form-group"><label class="form-label">Annual Return &mdash; <span id="sip-r-lbl">12%</span></label><input type="range" id="sip-r" min="4" max="25" value="12" step="0.5" oninput="document.getElementById('sip-r-lbl').textContent=this.value+'%';calcSIP()"><div class="slider-label"><span>4%</span><span>25%</span></div></div>
+<div class="form-group"><label class="form-label">Years &mdash; <span id="sip-y-lbl">15 yrs</span></label><input type="range" id="sip-y" min="1" max="40" value="15" oninput="document.getElementById('sip-y-lbl').textContent=this.value+' yrs';calcSIP()"><div class="slider-label"><span>1yr</span><span>40yrs</span></div></div>
+<div class="calc-result"><div class="calc-result-title">Corpus at Maturity</div><div class="calc-number" id="sip-corpus">&#8377;0</div><div style="margin-top:10px;"><div class="calc-row"><span class="label">Invested</span><span class="val" id="sip-inv">&#8377;0</span></div><div class="calc-row"><span class="label">Gain</span><span class="val up" id="sip-gain">&#8377;0</span></div><div class="calc-row"><span class="label">Multiple</span><span class="val" id="sip-mult">0&times;</span></div></div></div>
+<div style="position:relative;height:140px;margin-top:14px;"><canvas id="sipChart"></canvas></div>
+</div>
+</div>
+<div style="display:flex;flex-direction:column;gap:14px;">
+<div class="panel">
+<div class="panel-head"><span class="panel-title">Lumpsum Calculator</span></div>
+<div class="panel-body">
+<div class="form-row"><div class="form-group"><label class="form-label">Principal (&#8377;)</label><input class="bb-input" id="ls-p" type="number" value="100000" oninput="calcLS()"></div><div class="form-group"><label class="form-label">Return % p.a.</label><input class="bb-input" id="ls-r" type="number" value="12" oninput="calcLS()"></div></div>
+<div class="form-group"><label class="form-label">Years &mdash; <span id="ls-y-lbl">10</span></label><input type="range" id="ls-y" min="1" max="40" value="10" oninput="document.getElementById('ls-y-lbl').textContent=this.value;calcLS()"></div>
+<div class="calc-result"><div class="calc-result-title">Future Value</div><div class="calc-number" id="ls-fv">&#8377;0</div><div style="margin-top:8px;"><div class="calc-row"><span class="label">Gain</span><span class="val up" id="ls-gain">&#8377;0</span></div><div class="calc-row"><span class="label">CAGR</span><span class="val" id="ls-cagr">0%</span></div></div></div>
+</div>
+</div>
+<div class="panel">
+<div class="panel-head"><span class="panel-title">Goal SIP Planner</span></div>
+<div class="panel-body">
+<div class="form-row"><div class="form-group"><label class="form-label">Target (&#8377;)</label><input class="bb-input" id="gp-t" type="number" value="1000000" oninput="calcGoalSIP()"></div><div class="form-group"><label class="form-label">Years</label><input class="bb-input" id="gp-y" type="number" value="10" oninput="calcGoalSIP()"></div></div>
+<div class="form-group"><label class="form-label">Return %</label><input class="bb-input" id="gp-r" type="number" value="12" oninput="calcGoalSIP()"></div>
+<div class="calc-result"><div class="calc-result-title">Required Monthly SIP</div><div class="calc-number" id="gp-sip">&#8377;0</div><div style="margin-top:8px;"><div class="calc-row"><span class="label">Total Invested</span><span class="val" id="gp-inv">&#8377;0</span></div><div class="calc-row"><span class="label">Wealth Created</span><span class="val up" id="gp-w">&#8377;0</span></div></div></div>
+</div>
+</div>
+</div>
+</div>
+</div>
 
-    <!-- ══ CALCULATOR ══ -->
-    <div class="view" id="view-calculator">
-      <div class="g2" style="margin-bottom:0;">
-        <div class="panel">
-          <div class="panel-head"><span class="panel-title">SIP Calculator</span></div>
-          <div class="panel-body">
-            <div class="form-group"><label class="form-label">Monthly SIP (₹)</label><input class="bb-input" id="sip-amt" type="number" value="5000" oninput="calcSIP()"></div>
-            <div class="form-group"><label class="form-label">Annual Return — <span id="sip-r-lbl">12%</span></label><input type="range" id="sip-r" min="4" max="25" value="12" step="0.5" oninput="document.getElementById('sip-r-lbl').textContent=this.value+'%';calcSIP()"><div class="slider-label"><span>4%</span><span>25%</span></div></div>
-            <div class="form-group"><label class="form-label">Years — <span id="sip-y-lbl">15 yrs</span></label><input type="range" id="sip-y" min="1" max="40" value="15" oninput="document.getElementById('sip-y-lbl').textContent=this.value+' yrs';calcSIP()"><div class="slider-label"><span>1yr</span><span>40yrs</span></div></div>
-            <div class="calc-result"><div class="calc-result-title">Corpus at Maturity</div><div class="calc-number" id="sip-corpus">₹0</div><div style="margin-top:10px;"><div class="calc-row"><span class="label">Invested</span><span class="val" id="sip-inv">₹0</span></div><div class="calc-row"><span class="label">Gain</span><span class="val up" id="sip-gain">₹0</span></div><div class="calc-row"><span class="label">Multiple</span><span class="val" id="sip-mult">0×</span></div></div></div>
-            <div style="position:relative;height:140px;margin-top:14px;"><canvas id="sipChart"></canvas></div>
-          </div>
-        </div>
-        <div style="display:flex;flex-direction:column;gap:14px;">
-          <div class="panel">
-            <div class="panel-head"><span class="panel-title">Lumpsum Calculator</span></div>
-            <div class="panel-body">
-              <div class="form-row"><div class="form-group"><label class="form-label">Principal (₹)</label><input class="bb-input" id="ls-p" type="number" value="100000" oninput="calcLS()"></div><div class="form-group"><label class="form-label">Return % p.a.</label><input class="bb-input" id="ls-r" type="number" value="12" oninput="calcLS()"></div></div>
-              <div class="form-group"><label class="form-label">Years — <span id="ls-y-lbl">10</span></label><input type="range" id="ls-y" min="1" max="40" value="10" oninput="document.getElementById('ls-y-lbl').textContent=this.value;calcLS()"></div>
-              <div class="calc-result"><div class="calc-result-title">Future Value</div><div class="calc-number" id="ls-fv">₹0</div><div style="margin-top:8px;"><div class="calc-row"><span class="label">Gain</span><span class="val up" id="ls-gain">₹0</span></div><div class="calc-row"><span class="label">CAGR</span><span class="val" id="ls-cagr">0%</span></div></div></div>
-            </div>
-          </div>
-          <div class="panel">
-            <div class="panel-head"><span class="panel-title">Goal SIP Planner</span></div>
-            <div class="panel-body">
-              <div class="form-row"><div class="form-group"><label class="form-label">Target (₹)</label><input class="bb-input" id="gp-t" type="number" value="1000000" oninput="calcGoalSIP()"></div><div class="form-group"><label class="form-label">Years</label><input class="bb-input" id="gp-y" type="number" value="10" oninput="calcGoalSIP()"></div></div>
-              <div class="form-group"><label class="form-label">Return %</label><input class="bb-input" id="gp-r" type="number" value="12" oninput="calcGoalSIP()"></div>
-              <div class="calc-result"><div class="calc-result-title">Required Monthly SIP</div><div class="calc-number" id="gp-sip">₹0</div><div style="margin-top:8px;"><div class="calc-row"><span class="label">Total Invested</span><span class="val" id="gp-inv">₹0</span></div><div class="calc-row"><span class="label">Wealth Created</span><span class="val up" id="gp-w">₹0</span></div></div></div>
-            </div>
-          </div>
-        </div>
-      </div>
-    </div>
+<!-- DATA MANAGER -->
+<div class="view" id="view-data">
+<div class="g2">
+<div class="panel">
+<div class="panel-head"><span class="panel-title">Export Your Data</span></div>
+<div class="panel-body">
+<p style="font-size:12px;color:var(--text2);margin-bottom:16px;line-height:1.6;">Download all your data as a JSON file. Use this to back up or transfer to another device.</p>
+<div style="display:flex;flex-direction:column;gap:10px;">
+<button class="btn btn-amber" onclick="exportJSON()" style="width:100%;">&#11015; Export as JSON (Full Backup)</button>
+<button class="btn btn-green" onclick="exportCSV('holdings')" style="width:100%;">&#11015; Export Holdings as CSV</button>
+<button class="btn btn-green" onclick="exportCSV('transactions')" style="width:100%;">&#11015; Export Transactions as CSV</button>
+</div>
+<div style="margin-top:20px;padding-top:14px;border-top:1px solid var(--line);">
+<div style="font-size:9px;letter-spacing:2px;text-transform:uppercase;color:var(--text2);font-family:var(--mono);margin-bottom:8px;">Import from Kite (Holdings CSV)</div>
+<p style="font-size:11px;color:var(--text2);margin-bottom:12px;line-height:1.6;">In Kite app: Console &rarr; Reports &rarr; Holdings &rarr; Download CSV. Then import here.</p>
+<div class="import-zone" onclick="document.getElementById('kite-upload').click()">
+<div style="font-size:22px;">&#128202;</div>
+<p>Click to upload Kite Holdings CSV</p>
+<input type="file" id="kite-upload" accept=".csv,.xlsx" onchange="importKiteCSV(event)">
+</div>
+</div>
+</div>
+</div>
+<div class="panel">
+<div class="panel-head"><span class="panel-title">Import / Restore Data</span></div>
+<div class="panel-body">
+<div style="margin-bottom:20px;">
+<div class="data-section-title">Restore from JSON Backup</div>
+<div class="import-zone" onclick="document.getElementById('json-upload').click()">
+<div style="font-size:22px;">&#128193;</div>
+<p>Click to upload your .json backup file</p>
+<input type="file" id="json-upload" accept=".json" onchange="importJSON(event)">
+</div>
+</div>
+<div>
+<div class="data-section-title">Manual Data Entry Templates</div>
+<p style="font-size:11px;color:var(--text2);margin-bottom:12px;line-height:1.6;">Download a blank CSV template, fill it in Excel/Sheets, then import:</p>
+<button class="btn" onclick="downloadTemplate('holdings')" style="width:100%;margin-bottom:8px;">&#11015; Holdings Template CSV</button>
+<button class="btn" onclick="downloadTemplate('transactions')" style="width:100%;margin-bottom:8px;">&#11015; Transactions Template CSV</button>
+<button class="btn" onclick="downloadTemplate('goals')" style="width:100%;">&#11015; Goals Template CSV</button>
+</div>
+<div style="margin-top:20px;padding-top:14px;border-top:1px solid var(--line);">
+<div class="data-section-title">Import CSV</div>
+<div style="display:flex;gap:8px;margin-bottom:8px;">
+<select class="bb-select" id="csv-type"><option value="holdings">Holdings</option><option value="transactions">Transactions</option><option value="goals">Goals</option></select>
+<button class="btn btn-amber" onclick="document.getElementById('csv-upload').click()">Upload</button>
+</div>
+<input type="file" id="csv-upload" accept=".csv" style="display:none;" onchange="importCSV(event)">
+</div>
+</div>
+</div>
+</div>
+<div class="panel">
+<div class="panel-head"><span class="panel-title">&#9888; Danger Zone</span></div>
+<div class="panel-body" style="display:flex;gap:10px;flex-wrap:wrap;">
+<button class="btn btn-red" onclick="clearSection('holdings')">Clear Holdings</button>
+<button class="btn btn-red" onclick="clearSection('transactions')">Clear Transactions</button>
+<button class="btn btn-red" onclick="clearSection('goals')">Clear Goals</button>
+<button class="btn btn-red" onclick="clearSection('all')">Reset Everything</button>
+</div>
+</div>
+<div class="panel" style="margin-top:14px;">
+<div class="panel-head"><span class="panel-title">&#128241; iPhone / Android Setup Guide</span></div>
+<div class="panel-body">
+<div style="display:grid;grid-template-columns:1fr 1fr;gap:20px;">
+<div>
+<div style="font-size:11px;font-weight:600;color:var(--amber);margin-bottom:10px;font-family:var(--mono);">OPTION A &middot; Add to Home Screen (Offline)</div>
+<ol style="font-size:12px;color:var(--text1);line-height:2;padding-left:16px;">
+<li>Enable GitHub Pages (Settings &rarr; Pages &rarr; Branch: main)</li>
+<li>Your URL: <code style="color:var(--teal);">username.github.io/meridian</code></li>
+<li>Open URL in <strong style="color:var(--amber);">Safari</strong> (iPhone) or <strong style="color:var(--amber);">Chrome</strong> (Android)</li>
+<li>Tap Share &rarr; <strong style="color:var(--amber);">"Add to Home Screen"</strong></li>
+<li>Name it <strong style="color:var(--amber);">MERIDIAN</strong> &rarr; tap Add</li>
+<li>App icon appears on your home screen &#10003;</li>
+<li>Works offline &mdash; data saved locally to device</li>
+</ol>
+</div>
+<div>
+<div style="font-size:11px;font-weight:600;color:var(--amber);margin-bottom:10px;font-family:var(--mono);">OPTION B &middot; Cross-Device Sync (JSON Export)</div>
+<ol style="font-size:12px;color:var(--text1);line-height:2;padding-left:16px;">
+<li>On device A: Data &rarr; Export as JSON</li>
+<li>Save JSON to iCloud Drive / Google Drive</li>
+<li>On device B: Data &rarr; Restore from JSON Backup</li>
+<li>Upload the same JSON file</li>
+<li>All your data appears instantly &#10003;</li>
+<li>Repeat to keep both devices in sync</li>
+</ol>
+</div>
+</div>
+</div>
+</div>
+</div>
 
-    <!-- ══ DATA MANAGER ══ -->
-    <div class="view" id="view-data">
-      <div class="g2">
-        <div class="panel">
-          <div class="panel-head"><span class="panel-title">Export Your Data</span></div>
-          <div class="panel-body">
-            <p style="font-size:12px;color:var(--text2);margin-bottom:16px;line-height:1.6;">Download all your data as a JSON file. Use this to back up, transfer to another device, or reimport later.</p>
-            <div style="display:flex;flex-direction:column;gap:10px;">
-              <button class="btn btn-amber" onclick="exportJSON()" style="width:100%;">⬇ Export as JSON (Full Backup)</button>
-              <button class="btn btn-green" onclick="exportCSV('holdings')" style="width:100%;">⬇ Export Holdings as CSV</button>
-              <button class="btn btn-green" onclick="exportCSV('transactions')" style="width:100%;">⬇ Export Transactions as CSV</button>
-            </div>
-            <div style="margin-top:20px;padding-top:14px;border-top:1px solid var(--line);">
-              <div style="font-size:9px;letter-spacing:2px;text-transform:uppercase;color:var(--text2);font-family:var(--mono);margin-bottom:8px;">Import from Kite (Holdings CSV)</div>
-              <p style="font-size:11px;color:var(--text2);margin-bottom:12px;line-height:1.6;">In Kite app: Console → Reports → Holdings → Download CSV. Then import here.</p>
-              <div class="import-zone" onclick="document.getElementById('kite-upload').click()">
-                <div style="font-size:22px;">📊</div>
-                <p>Click to upload Kite Holdings CSV</p>
-                <input type="file" id="kite-upload" accept=".csv,.xlsx" onchange="importKiteCSV(event)">
-              </div>
-            </div>
-          </div>
-        </div>
-        <div class="panel">
-          <div class="panel-head"><span class="panel-title">Import / Restore Data</span></div>
-          <div class="panel-body">
-            <div style="margin-bottom:20px;">
-              <div class="data-section-title">Restore from JSON Backup</div>
-              <div class="import-zone" onclick="document.getElementById('json-upload').click()">
-                <div style="font-size:22px;">🗂</div>
-                <p>Click to upload your .json backup file</p>
-                <input type="file" id="json-upload" accept=".json" onchange="importJSON(event)">
-              </div>
-            </div>
-            <div>
-              <div class="data-section-title">Manual Data Entry Templates</div>
-              <p style="font-size:11px;color:var(--text2);margin-bottom:12px;line-height:1.6;">Download a blank CSV template, fill it in Excel/Sheets, then import:</p>
-              <button class="btn" onclick="downloadTemplate('holdings')" style="width:100%;margin-bottom:8px;">⬇ Holdings Template CSV</button>
-              <button class="btn" onclick="downloadTemplate('transactions')" style="width:100%;margin-bottom:8px;">⬇ Transactions Template CSV</button>
-              <button class="btn" onclick="downloadTemplate('goals')" style="width:100%;">⬇ Goals Template CSV</button>
-            </div>
-            <div style="margin-top:20px;padding-top:14px;border-top:1px solid var(--line);">
-              <div class="data-section-title">Import CSV</div>
-              <div style="display:flex;gap:8px;margin-bottom:8px;">
-                <select class="bb-select" id="csv-type"><option value="holdings">Holdings</option><option value="transactions">Transactions</option><option value="goals">Goals</option></select>
-                <button class="btn btn-amber" onclick="document.getElementById('csv-upload').click()">Upload</button>
-              </div>
-              <input type="file" id="csv-upload" accept=".csv" style="display:none;" onchange="importCSV(event)">
-            </div>
-          </div>
-        </div>
-      </div>
+</div>
+</div>
+</div>
 
-      <div class="panel">
-        <div class="panel-head"><span class="panel-title">⚠ Danger Zone</span></div>
-        <div class="panel-body" style="display:flex;gap:10px;flex-wrap:wrap;">
-          <button class="btn btn-red" onclick="clearSection('holdings')">Clear Holdings</button>
-          <button class="btn btn-red" onclick="clearSection('transactions')">Clear Transactions</button>
-          <button class="btn btn-red" onclick="clearSection('goals')">Clear Goals</button>
-          <button class="btn btn-red" onclick="clearSection('all')">Reset Everything</button>
-        </div>
-      </div>
-
-      <div class="panel" style="margin-top:14px;">
-        <div class="panel-head"><span class="panel-title">📱 iPhone Setup Guide</span></div>
-        <div class="panel-body">
-          <div style="display:grid;grid-template-columns:1fr 1fr;gap:20px;">
-            <div>
-              <div style="font-size:11px;font-weight:600;color:var(--amber);margin-bottom:10px;font-family:var(--mono);">OPTION A · Add to Home Screen (Offline)</div>
-              <ol style="font-size:12px;color:var(--text1);line-height:2;padding-left:16px;">
-                <li>Host this file on GitHub Pages (free)</li>
-                <li>Open the URL in Safari on iPhone</li>
-                <li>Tap the <strong style="color:var(--amber);">Share</strong> button (box with arrow)</li>
-                <li>Scroll down → tap <strong style="color:var(--amber);">"Add to Home Screen"</strong></li>
-                <li>Name it <strong style="color:var(--amber);">MERIDIAN</strong> → tap Add</li>
-                <li>App icon appears on your home screen ✓</li>
-                <li>Works offline — data saved to phone</li>
-              </ol>
-            </div>
-            <div>
-              <div style="font-size:11px;font-weight:600;color:var(--amber);margin-bottom:10px;font-family:var(--mono);">OPTION B · Host on GitHub Pages (Free)</div>
-              <ol style="font-size:12px;color:var(--text1);line-height:2;padding-left:16px;">
-                <li>Go to <strong style="color:var(--amber);">github.com</strong> → New repository</li>
-                <li>Name it <strong style="color:var(--amber);">meridian</strong> → Public</li>
-                <li>Upload <code style="color:var(--teal);">index.html</code>, <code style="color:var(--teal);">manifest.json</code>, <code style="color:var(--teal);">sw.js</code></li>
-                <li>Go to Settings → Pages → Branch: main</li>
-                <li>Your URL: <code style="color:var(--teal);">username.github.io/meridian</code></li>
-                <li>Open on iPhone Safari → Add to Home Screen</li>
-              </ol>
-            </div>
-          </div>
-        </div>
-      </div>
-    </div>
-
-  </div><!-- /content -->
-</div><!-- /main -->
-</div><!-- /shell -->
-
-<!-- ═══ MOBILE NAV ═══ -->
+<!-- MOBILE NAV -->
 <nav class="mobile-nav">
-  <button class="mob-btn active" onclick="nav('networth')"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor"><polyline points="22 12 18 12 15 21 9 3 6 12 2 12"/></svg>NET</button>
-  <button class="mob-btn" onclick="nav('portfolio')"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor"><rect x="2" y="3" width="20" height="14" rx="2"/><line x1="8" y1="21" x2="16" y2="21"/><line x1="12" y1="17" x2="12" y2="21"/></svg>PORT</button>
-  <button class="mob-btn" onclick="nav('expenses')"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor"><line x1="12" y1="1" x2="12" y2="23"/><path d="M17 5H9.5a3.5 3.5 0 1 0 0 7h5a3.5 3.5 0 1 1 0 7H6"/></svg>EXP</button>
-  <button class="mob-btn" onclick="nav('goals')"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor"><circle cx="12" cy="12" r="10"/><circle cx="12" cy="12" r="6"/><circle cx="12" cy="12" r="2"/></svg>GOALS</button>
-  <button class="mob-btn" onclick="nav('calculator')"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor"><rect x="4" y="2" width="16" height="20" rx="2"/><line x1="8" y1="6" x2="16" y2="6"/><line x1="8" y1="10" x2="16" y2="10"/><line x1="8" y1="14" x2="10" y2="14"/><line x1="14" y1="14" x2="16" y2="14"/><line x1="8" y1="18" x2="10" y2="18"/><line x1="14" y1="18" x2="16" y2="18"/></svg>CALC</button>
-  <button class="mob-btn" onclick="nav('data')"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="17 8 12 3 7 8"/><line x1="12" y1="3" x2="12" y2="15"/></svg>DATA</button>
+<button class="mob-btn active" onclick="nav('networth')"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor"><polyline points="22 12 18 12 15 21 9 3 6 12 2 12"/></svg>NET</button>
+<button class="mob-btn" onclick="nav('portfolio')"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor"><rect x="2" y="3" width="20" height="14" rx="2"/><line x1="8" y1="21" x2="16" y2="21"/><line x1="12" y1="17" x2="12" y2="21"/></svg>PORT</button>
+<button class="mob-btn" onclick="nav('expenses')"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor"><line x1="12" y1="1" x2="12" y2="23"/><path d="M17 5H9.5a3.5 3.5 0 1 0 0 7h5a3.5 3.5 0 1 1 0 7H6"/></svg>EXP</button>
+<button class="mob-btn" onclick="nav('goals')"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor"><circle cx="12" cy="12" r="10"/><circle cx="12" cy="12" r="6"/><circle cx="12" cy="12" r="2"/></svg>GOALS</button>
+<button class="mob-btn" onclick="nav('calculator')"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor"><rect x="4" y="2" width="16" height="20" rx="2"/><line x1="8" y1="6" x2="16" y2="6"/><line x1="8" y1="10" x2="16" y2="10"/><line x1="8" y1="14" x2="10" y2="14"/><line x1="14" y1="14" x2="16" y2="14"/><line x1="8" y1="18" x2="10" y2="18"/><line x1="14" y1="18" x2="16" y2="18"/></svg>CALC</button>
+<button class="mob-btn" onclick="nav('data')"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="17 8 12 3 7 8"/><line x1="12" y1="3" x2="12" y2="15"/></svg>DATA</button>
 </nav>
 
-<!-- ═══ MODALS ═══ -->
-<!-- Asset -->
+<!-- MODALS -->
 <div class="overlay" id="assetModal"><div class="modal">
-  <div class="modal-title">ADD ASSET / LIABILITY</div>
-  <div class="form-group"><label class="form-label">Name</label><input class="bb-input" id="a-name" placeholder="HDFC Savings Account"></div>
-  <div class="form-row">
-    <div class="form-group"><label class="form-label">Category</label><select class="bb-select" id="a-cat"><option>Equity</option><option>Mutual Fund</option><option>Fixed Deposit</option><option>PPF/EPF</option><option>Real Estate</option><option>Gold</option><option>Cash/Savings</option><option>Other</option></select></div>
-    <div class="form-group"><label class="form-label">Type</label><select class="bb-select" id="a-type"><option value="asset">Asset</option><option value="liability">Liability</option></select></div>
-  </div>
-  <div class="form-group"><label class="form-label">Current Value (₹)</label><input class="bb-input" id="a-val" type="number" placeholder="500000"></div>
-  <div class="modal-footer"><button class="btn" onclick="closeModal('assetModal')">Cancel</button><button class="btn btn-amber" onclick="addAsset()">Add</button></div>
+<div class="modal-title">ADD ASSET / LIABILITY</div>
+<div class="form-group"><label class="form-label">Name</label><input class="bb-input" id="a-name" placeholder="HDFC Savings Account"></div>
+<div class="form-row">
+<div class="form-group"><label class="form-label">Category</label><select class="bb-select" id="a-cat"><option>Equity</option><option>Mutual Fund</option><option>Fixed Deposit</option><option>PPF/EPF</option><option>Real Estate</option><option>Gold</option><option>Cash/Savings</option><option>Other</option></select></div>
+<div class="form-group"><label class="form-label">Type</label><select class="bb-select" id="a-type"><option value="asset">Asset</option><option value="liability">Liability</option></select></div>
+</div>
+<div class="form-group"><label class="form-label">Current Value (&#8377;)</label><input class="bb-input" id="a-val" type="number" placeholder="500000"></div>
+<div class="modal-footer"><button class="btn" onclick="closeModal('assetModal')">Cancel</button><button class="btn btn-amber" onclick="addAsset()">Add</button></div>
 </div></div>
 
-<!-- Holding -->
 <div class="overlay" id="holdingModal"><div class="modal">
-  <div class="modal-title">ADD HOLDING</div>
-  <div class="form-row"><div class="form-group"><label class="form-label">Symbol</label><input class="bb-input" id="h-sym" placeholder="RELIANCE"></div><div class="form-group"><label class="form-label">Sector</label><input class="bb-input" id="h-sec" placeholder="ENERGY"></div></div>
-  <div class="form-row3"><div class="form-group"><label class="form-label">Qty</label><input class="bb-input" id="h-qty" type="number" placeholder="10"></div><div class="form-group"><label class="form-label">Avg Price (₹)</label><input class="bb-input" id="h-avg" type="number" placeholder="2500"></div><div class="form-group"><label class="form-label">LTP (₹)</label><input class="bb-input" id="h-ltp" type="number" placeholder="2800"></div></div>
-  <div class="modal-footer"><button class="btn" onclick="closeModal('holdingModal')">Cancel</button><button class="btn btn-amber" onclick="addHolding()">Add</button></div>
+<div class="modal-title">ADD HOLDING</div>
+<div class="form-row"><div class="form-group"><label class="form-label">Symbol</label><input class="bb-input" id="h-sym" placeholder="RELIANCE"></div><div class="form-group"><label class="form-label">Sector</label><input class="bb-input" id="h-sec" placeholder="ENERGY"></div></div>
+<div class="form-row3"><div class="form-group"><label class="form-label">Qty</label><input class="bb-input" id="h-qty" type="number" placeholder="10"></div><div class="form-group"><label class="form-label">Avg Price (&#8377;)</label><input class="bb-input" id="h-avg" type="number" placeholder="2500"></div><div class="form-group"><label class="form-label">LTP (&#8377;)</label><input class="bb-input" id="h-ltp" type="number" placeholder="2800"></div></div>
+<div class="modal-footer"><button class="btn" onclick="closeModal('holdingModal')">Cancel</button><button class="btn btn-amber" onclick="addHolding()">Add</button></div>
 </div></div>
 
-<!-- MF -->
 <div class="overlay" id="mfModal"><div class="modal">
-  <div class="modal-title">ADD MUTUAL FUND</div>
-  <div class="form-group"><label class="form-label">Fund Name</label><input class="bb-input" id="mf-name" placeholder="Axis Midcap Fund - Direct Plan"></div>
-  <div class="form-row3"><div class="form-group"><label class="form-label">Units</label><input class="bb-input" id="mf-u" type="number" placeholder="150.5"></div><div class="form-group"><label class="form-label">Avg NAV (₹)</label><input class="bb-input" id="mf-a" type="number" placeholder="45.60"></div><div class="form-group"><label class="form-label">Current NAV (₹)</label><input class="bb-input" id="mf-n" type="number" placeholder="52.30"></div></div>
-  <div class="form-row"><div class="form-group"><label class="form-label">Category</label><select class="bb-select" id="mf-cat"><option>Large Cap</option><option>Mid Cap</option><option>Small Cap</option><option>ELSS</option><option>Flexi Cap</option><option>Index</option><option>Debt</option></select></div><div class="form-group"><label class="form-label">SIP Amount (₹/mo)</label><input class="bb-input" id="mf-sip" type="number" placeholder="2500"></div></div>
-  <div class="modal-footer"><button class="btn" onclick="closeModal('mfModal')">Cancel</button><button class="btn btn-amber" onclick="addMF()">Add</button></div>
+<div class="modal-title">ADD MUTUAL FUND</div>
+<div class="form-group"><label class="form-label">Fund Name</label><input class="bb-input" id="mf-name" placeholder="Axis Midcap Fund - Direct Plan"></div>
+<div class="form-row3"><div class="form-group"><label class="form-label">Units</label><input class="bb-input" id="mf-u" type="number" placeholder="150.5"></div><div class="form-group"><label class="form-label">Avg NAV (&#8377;)</label><input class="bb-input" id="mf-a" type="number" placeholder="45.60"></div><div class="form-group"><label class="form-label">Current NAV (&#8377;)</label><input class="bb-input" id="mf-n" type="number" placeholder="52.30"></div></div>
+<div class="form-row"><div class="form-group"><label class="form-label">Category</label><select class="bb-select" id="mf-cat"><option>Large Cap</option><option>Mid Cap</option><option>Small Cap</option><option>ELSS</option><option>Flexi Cap</option><option>Index</option><option>Debt</option></select></div><div class="form-group"><label class="form-label">SIP Amount (&#8377;/mo)</label><input class="bb-input" id="mf-sip" type="number" placeholder="2500"></div></div>
+<div class="modal-footer"><button class="btn" onclick="closeModal('mfModal')">Cancel</button><button class="btn btn-amber" onclick="addMF()">Add</button></div>
 </div></div>
 
-<!-- Transaction -->
 <div class="overlay" id="txnModal"><div class="modal">
-  <div class="modal-title">ADD TRANSACTION</div>
-  <div class="form-group"><label class="form-label">Description</label><input class="bb-input" id="t-desc" placeholder="Zomato order"></div>
-  <div class="form-row"><div class="form-group"><label class="form-label">Amount (₹)</label><input class="bb-input" id="t-amt" type="number" placeholder="450"></div><div class="form-group"><label class="form-label">Type</label><select class="bb-select" id="t-type"><option value="expense">Expense</option><option value="income">Income</option></select></div></div>
-  <div class="form-row"><div class="form-group"><label class="form-label">Category</label><select class="bb-select" id="t-cat"><option>🍔 Food</option><option>🚗 Transport</option><option>🏠 Housing</option><option>💊 Health</option><option>🎬 Entertainment</option><option>🛍️ Shopping</option><option>📚 Education</option><option>💡 Utilities</option><option>✈️ Travel</option><option>📦 Other</option></select></div><div class="form-group"><label class="form-label">Date</label><input class="bb-input" id="t-date" type="date"></div></div>
-  <div class="modal-footer"><button class="btn" onclick="closeModal('txnModal')">Cancel</button><button class="btn btn-amber" onclick="addTxn()">Add</button></div>
+<div class="modal-title">ADD TRANSACTION</div>
+<div class="form-group"><label class="form-label">Description</label><input class="bb-input" id="t-desc" placeholder="Zomato order"></div>
+<div class="form-row"><div class="form-group"><label class="form-label">Amount (&#8377;)</label><input class="bb-input" id="t-amt" type="number" placeholder="450"></div><div class="form-group"><label class="form-label">Type</label><select class="bb-select" id="t-type"><option value="expense">Expense</option><option value="income">Income</option></select></div></div>
+<div class="form-row"><div class="form-group"><label class="form-label">Category</label><select class="bb-select" id="t-cat"><option>&#127828; Food</option><option>&#128664; Transport</option><option>&#127968; Housing</option><option>&#128138; Health</option><option>&#127916; Entertainment</option><option>&#128717; Shopping</option><option>&#128218; Education</option><option>&#128161; Utilities</option><option>&#9992; Travel</option><option>&#128230; Other</option></select></div><div class="form-group"><label class="form-label">Date</label><input class="bb-input" id="t-date" type="date"></div></div>
+<div class="modal-footer"><button class="btn" onclick="closeModal('txnModal')">Cancel</button><button class="btn btn-amber" onclick="addTxn()">Add</button></div>
 </div></div>
 
-<!-- Goal -->
 <div class="overlay" id="goalModal"><div class="modal">
-  <div class="modal-title">NEW GOAL</div>
-  <div class="form-group"><label class="form-label">Goal Name</label><input class="bb-input" id="g-name" placeholder="Emergency Fund / House / Car"></div>
-  <div class="form-row"><div class="form-group"><label class="form-label">Target (₹)</label><input class="bb-input" id="g-tgt" type="number" placeholder="1000000"></div><div class="form-group"><label class="form-label">Saved So Far (₹)</label><input class="bb-input" id="g-saved" type="number" placeholder="0"></div></div>
-  <div class="form-row"><div class="form-group"><label class="form-label">Target Year</label><input class="bb-input" id="g-yr" type="number" placeholder="2030"></div><div class="form-group"><label class="form-label">Priority</label><select class="bb-select" id="g-pri"><option value="high">High</option><option value="medium">Medium</option><option value="low">Low</option></select></div></div>
-  <div class="modal-footer"><button class="btn" onclick="closeModal('goalModal')">Cancel</button><button class="btn btn-amber" onclick="addGoal()">Add Goal</button></div>
+<div class="modal-title">NEW GOAL</div>
+<div class="form-group"><label class="form-label">Goal Name</label><input class="bb-input" id="g-name" placeholder="Emergency Fund / House / Car"></div>
+<div class="form-row"><div class="form-group"><label class="form-label">Target (&#8377;)</label><input class="bb-input" id="g-tgt" type="number" placeholder="1000000"></div><div class="form-group"><label class="form-label">Saved So Far (&#8377;)</label><input class="bb-input" id="g-saved-inp" type="number" placeholder="0"></div></div>
+<div class="form-row"><div class="form-group"><label class="form-label">Target Year</label><input class="bb-input" id="g-yr" type="number" placeholder="2030"></div><div class="form-group"><label class="form-label">Priority</label><select class="bb-select" id="g-pri"><option value="high">High</option><option value="medium">Medium</option><option value="low">Low</option></select></div></div>
+<div class="modal-footer"><button class="btn" onclick="closeModal('goalModal')">Cancel</button><button class="btn btn-amber" onclick="addGoal()">Add Goal</button></div>
 </div></div>
 
-<!-- SIP -->
 <div class="overlay" id="sipModal"><div class="modal">
-  <div class="modal-title">ADD SIP</div>
-  <div class="form-group"><label class="form-label">Fund Name</label><input class="bb-input" id="s-name" placeholder="Axis Midcap Fund Direct"></div>
-  <div class="form-row"><div class="form-group"><label class="form-label">Monthly Amount (₹)</label><input class="bb-input" id="s-amt" type="number" placeholder="2500"></div><div class="form-group"><label class="form-label">Start Date</label><input class="bb-input" id="s-date" type="date"></div></div>
-  <div class="modal-footer"><button class="btn" onclick="closeModal('sipModal')">Cancel</button><button class="btn btn-green" onclick="addSIP()">Start SIP</button></div>
+<div class="modal-title">ADD SIP</div>
+<div class="form-group"><label class="form-label">Fund Name</label><input class="bb-input" id="s-name" placeholder="Axis Midcap Fund Direct"></div>
+<div class="form-row"><div class="form-group"><label class="form-label">Monthly Amount (&#8377;)</label><input class="bb-input" id="s-amt" type="number" placeholder="2500"></div><div class="form-group"><label class="form-label">Start Date</label><input class="bb-input" id="s-date" type="date"></div></div>
+<div class="modal-footer"><button class="btn" onclick="closeModal('sipModal')">Cancel</button><button class="btn btn-green" onclick="addSIP()">Start SIP</button></div>
 </div></div>
 
 <div class="toast" id="toast"></div>
 
 <script>
-// ══════════════════════════════════
-// STORAGE — all data persists in localStorage
-// ══════════════════════════════════
+// ══ STORAGE ══
 const STORE_KEY = 'meridian_v2';
 const DEFAULT_STATE = {
   assets:[],holdings:[],mf:[],transactions:[],goals:[],sips:[],
   profile:{salary:0,otherIncome:0,fixedExp:0,varExp:0},
   budget:0
 };
-
 function loadData(){
-  try{ return JSON.parse(localStorage.getItem(STORE_KEY)) || {...DEFAULT_STATE}; }
+  try{ return {...DEFAULT_STATE,...JSON.parse(localStorage.getItem(STORE_KEY)||'{}')}; }
   catch(e){ return {...DEFAULT_STATE}; }
 }
 function saveData(){ localStorage.setItem(STORE_KEY, JSON.stringify(S)); }
@@ -649,19 +583,16 @@ function saveProfile(){
   S.profile.varExp = +document.getElementById('exp-var').value||0;
   saveData();
 }
-
 let S = loadData();
 
-// ══════════════════════════════════
-// HELPERS
-// ══════════════════════════════════
+// ══ HELPERS ══
 const COLORS=['#e8a020','#2d7ef5','#1db87a','#e8304a','#16c4b0','#a855f7','#f97316','#06b6d4','#84cc16','#ec4899','#64748b','#f43f5e'];
 function fmt(n){
   const a=Math.abs(n);
-  if(a>=10000000) return '₹'+(n/10000000).toFixed(2)+'Cr';
-  if(a>=100000) return '₹'+(n/100000).toFixed(2)+'L';
-  if(a>=1000) return '₹'+Math.round(n).toLocaleString('en-IN');
-  return '₹'+Math.round(n);
+  if(a>=10000000) return '\u20b9'+(n/10000000).toFixed(2)+'Cr';
+  if(a>=100000) return '\u20b9'+(n/100000).toFixed(2)+'L';
+  if(a>=1000) return '\u20b9'+Math.round(n).toLocaleString('en-IN');
+  return '\u20b9'+Math.round(n);
 }
 function pctStr(n){ return (n>=0?'+':'')+n.toFixed(1)+'%'; }
 function sChip(s){
@@ -677,26 +608,35 @@ function toast(msg, type='success'){
   el.textContent=msg; el.className='toast '+type+' show';
   setTimeout(()=>el.classList.remove('show'),2800);
 }
+function openModal(id){ document.getElementById(id).classList.add('open'); }
+function closeModal(id){ document.getElementById(id).classList.remove('open'); }
+// Close modal on backdrop click
+document.querySelectorAll('.overlay').forEach(o=>{
+  o.addEventListener('click', e=>{ if(e.target===o) o.classList.remove('open'); });
+});
 
-// ══════════════════════════════════
-// TICKER
-// ══════════════════════════════════
+// ══ DATE ══
+(function(){
+  const d=new Date();
+  document.getElementById('topbar-date').textContent=d.toLocaleDateString('en-IN',{day:'2-digit',month:'short',year:'numeric'}).toUpperCase();
+})();
+
+// ══ TICKER ══
 const TICKS=[
   {sym:'NIFTY50',price:'23,728',chg:'+0.45%',up:true},{sym:'SENSEX',price:'78,193',chg:'+0.38%',up:true},
   {sym:'RELIANCE',price:'1,312',chg:'-0.22%',up:false},{sym:'HDFCBANK',price:'1,870',chg:'+1.12%',up:true},
   {sym:'INFY',price:'1,490',chg:'-0.55%',up:false},{sym:'TCS',price:'3,820',chg:'+0.31%',up:true},
-  {sym:'GOLD',price:'₹9,210/g',chg:'+0.8%',up:true},{sym:'USD/INR',price:'83.62',chg:'-0.08%',up:false},
+  {sym:'GOLD',price:'\u20b99,210/g',chg:'+0.8%',up:true},{sym:'USD/INR',price:'83.62',chg:'-0.08%',up:false},
 ];
 function buildTicker(){
   const d=[...TICKS,...TICKS];
   document.getElementById('ticker').innerHTML=d.map(t=>`<div class="tick-item"><span class="tick-sym">${t.sym}</span><span class="tick-price">${t.price}</span><span class="tick-chg ${t.up?'up':'dn'}">${t.chg}</span></div>`).join('');
 }
+buildTicker();
 
-// ══════════════════════════════════
-// NAVIGATION
-// ══════════════════════════════════
+// ══ NAV ══
 const LABELS={networth:'NET WORTH',portfolio:'PORTFOLIO',expenses:'EXPENSES',goals:'GOALS & SIP',calculator:'CALCULATOR',data:'DATA MANAGER'};
-const SUBS={networth:'PERSONAL DASHBOARD',portfolio:'EQUITY · MUTUAL FUNDS',expenses:'BUDGET TRACKER',goals:'FINANCIAL GOALS',calculator:'SIP · LUMPSUM · GOAL PLANNER',data:'IMPORT · EXPORT · BACKUP'};
+const SUBS={networth:'PERSONAL DASHBOARD',portfolio:'EQUITY \u00b7 MUTUAL FUNDS',expenses:'BUDGET TRACKER',goals:'FINANCIAL GOALS',calculator:'SIP \u00b7 LUMPSUM \u00b7 GOAL PLANNER',data:'IMPORT \u00b7 EXPORT \u00b7 BACKUP'};
 function nav(page){
   document.querySelectorAll('.view').forEach(v=>v.classList.remove('active'));
   document.querySelectorAll('.rail-btn,.mob-btn').forEach(b=>b.classList.remove('active'));
@@ -711,9 +651,7 @@ function nav(page){
   if(page==='calculator'){calcSIP();calcLS();calcGoalSIP();}
 }
 
-// ══════════════════════════════════
-// NET WORTH
-// ══════════════════════════════════
+// ══ NET WORTH ══
 let _nwC=null;
 function renderNW(){
   const assets=S.assets.filter(a=>a.type==='asset');
@@ -727,22 +665,24 @@ function renderNW(){
   document.getElementById('nw-assets').textContent=fmt(totalA);
   document.getElementById('nw-liab').textContent=fmt(totalL);
   document.getElementById('nw-save').textContent=fmt(Math.max(0,inc-exp));
-
+  // Profile fields
+  document.getElementById('inc-sal').value=S.profile.salary||'';
+  document.getElementById('inc-other').value=S.profile.otherIncome||'';
+  document.getElementById('exp-fix').value=S.profile.fixedExp||'';
+  document.getElementById('exp-var').value=S.profile.varExp||'';
   // Chart
   const cats={};
   assets.forEach(a=>{cats[a.cat]=(cats[a.cat]||0)+a.value;});
   const keys=Object.keys(cats),vals=keys.map(k=>cats[k]);
-  if(_nwC)_nwC.destroy();
+  if(_nwC){_nwC.destroy();_nwC=null;}
   if(vals.length){
     _nwC=new Chart(document.getElementById('nwChart'),{type:'doughnut',data:{labels:keys,datasets:[{data:vals,backgroundColor:COLORS,borderWidth:2,borderColor:'#111520'}]},options:{responsive:true,maintainAspectRatio:false,plugins:{legend:{display:false},tooltip:{callbacks:{label:c=>' '+c.label+': '+fmt(c.raw)}}},cutout:'70%'}});
-    document.getElementById('nw-legend').innerHTML=keys.map((k,i)=>`<li><span class="d-dot" style="background:${COLORS[i]}"></span><span class="d-name">${k}</span><span class="d-val">${fmt(vals[i])}</span><span class="d-pct">${(vals[i]/totalA*100).toFixed(0)}%</span></li>`).join('');
+    document.getElementById('nw-legend').innerHTML=keys.map((k,i)=>`<li><span class="d-dot" style="background:${COLORS[i]}"></span><span class="d-name">${k}</span><span class="d-val">${fmt(vals[i])}</span><span class="d-pct">${totalA?(vals[i]/totalA*100).toFixed(0):0}%</span></li>`).join('');
   } else {
     document.getElementById('nw-legend').innerHTML='<li style="color:var(--text3);font-family:var(--mono);font-size:11px;justify-content:center;">Add assets to see breakdown</li>';
   }
-
-  // Table
   document.getElementById('asset-tbody').innerHTML = S.assets.length
-    ? S.assets.map((a,i)=>`<tr><td class="sym">${a.name}</td><td><span class="chip chip-c">${a.cat}</span></td><td><span class="chip ${a.type==='asset'?'chip-a':'chip-d'}">${a.type}</span></td><td class="mono ${a.type==='liability'?'dn':'up'}">${fmt(a.value)}</td><td><button class="btn btn-xs btn-red" onclick="del('assets',${i})">×</button></td></tr>`).join('')
+    ? S.assets.map((a,i)=>`<tr><td class="sym">${a.name}</td><td><span class="chip chip-c">${a.cat}</span></td><td><span class="chip ${a.type==='asset'?'chip-a':'chip-d'}">${a.type}</span></td><td class="mono ${a.type==='liability'?'dn':'up'}">${fmt(a.value)}</td><td><button class="btn btn-xs btn-red" onclick="del('assets',${i})">&#215;</button></td></tr>`).join('')
     : '<tr><td colspan="5" style="text-align:center;color:var(--text3);font-family:var(--mono);font-size:11px;padding:20px;">No assets added yet</td></tr>';
 }
 function drawGauge(){
@@ -762,20 +702,17 @@ function addAsset(){
   const value=+document.getElementById('a-val').value||0;
   if(!name||!value){toast('Fill name & value','error');return;}
   S.assets.push({name,cat:document.getElementById('a-cat').value,value,type:document.getElementById('a-type').value});
-  saveData();closeModal('assetModal');renderNW();toast('Asset added ✓');
+  saveData();closeModal('assetModal');
+  document.getElementById('a-name').value='';document.getElementById('a-val').value='';
+  renderNW();toast('Asset added \u2713');
 }
 
-// ══════════════════════════════════
-// PORTFOLIO
-// ══════════════════════════════════
-let _sC=null, _hFiltered=[...S.holdings];
+// ══ PORTFOLIO ══
+let _sC=null;
+let _hFiltered=[];
 function renderPortfolio(){
   _hFiltered=[...S.holdings];
-  renderHoldings();
-  renderSectorChart();
-  renderMFList();
-  renderMovers();
-  // KPIs
+  renderHoldings();renderSectorChart();renderMFList();renderMovers();
   const eqVal=S.holdings.reduce((s,h)=>s+h.ltp*h.qty,0);
   const eqInv=S.holdings.filter(h=>h.avg>0).reduce((s,h)=>s+h.avg*h.qty,0);
   const eqPnl=S.holdings.reduce((s,h)=>s+h.pnl,0);
@@ -785,10 +722,10 @@ function renderPortfolio(){
   document.getElementById('port-val').textContent=fmt(eqVal+mfVal);
   document.getElementById('port-pnl-sub').innerHTML=`<span class="${eqPnl+mfPnl>=0?'up':'dn'}">${eqPnl+mfPnl>=0?'+':''}${fmt(eqPnl+mfPnl)} P&L</span>`;
   document.getElementById('port-eq-ret').className='kpi-value '+(eqPnl>=0?'up':'dn');
-  document.getElementById('port-eq-ret').textContent=eqInv>0?pctStr(eqPnl/eqInv*100):'—';
+  document.getElementById('port-eq-ret').textContent=eqInv>0?pctStr(eqPnl/eqInv*100):'&mdash;';
   document.getElementById('port-eq-inv').textContent=eqInv>0?'Invested '+fmt(eqInv):'No equity positions';
   document.getElementById('port-mf-ret').className='kpi-value '+(mfPnl>=0?'up':'dn');
-  document.getElementById('port-mf-ret').textContent=mfInv>0?pctStr(mfPnl/mfInv*100):'—';
+  document.getElementById('port-mf-ret').textContent=mfInv>0?pctStr(mfPnl/mfInv*100):'&mdash;';
   document.getElementById('port-mf-inv').textContent=mfInv>0?'Invested '+fmt(mfInv):'No MF positions';
   document.getElementById('port-pos').textContent=S.holdings.length+S.mf.length;
 }
@@ -796,16 +733,16 @@ function renderHoldings(){
   const tbody=document.getElementById('holdings-tbody');
   tbody.innerHTML = _hFiltered.length
     ? _hFiltered.map((h,i)=>`<tr>
-        <td class="sym">${h.sym}</td>
-        <td><span class="chip ${sChip(h.sector)}">${(h.sector||'—').split(' ')[0]}</span></td>
-        <td class="mono">${h.qty}</td>
-        <td class="mono neu">${h.avg>0?'₹'+h.avg.toFixed(2):'—'}</td>
-        <td class="mono" style="color:var(--text0);">₹${h.ltp.toFixed(2)}</td>
-        <td class="mono ${h.pnl>=0?'up':'dn'}">${h.pnl>=0?'+':''}${fmt(Math.abs(h.pnl))}</td>
-        <td class="mono ${h.pnlPct>=0?'up':'dn'}">${h.avg>0?pctStr(h.pnlPct):'—'}</td>
-        <td><button class="btn btn-xs btn-red" onclick="del('holdings',${S.holdings.indexOf(h)})">×</button></td>
-      </tr>`).join('')
-    : '<tr><td colspan="8" style="text-align:center;color:var(--text3);font-family:var(--mono);font-size:11px;padding:24px;">No holdings. Add your first position →</td></tr>';
+      <td class="sym">${h.sym}</td>
+      <td><span class="chip ${sChip(h.sector)}">${(h.sector||'&mdash;').split(' ')[0]}</span></td>
+      <td class="mono">${h.qty}</td>
+      <td class="mono neu">${h.avg>0?'\u20b9'+h.avg.toFixed(2):'&mdash;'}</td>
+      <td class="mono" style="color:var(--text0);">\u20b9${h.ltp.toFixed(2)}</td>
+      <td class="mono ${h.pnl>=0?'up':'dn'}">${h.pnl>=0?'+':''}${fmt(Math.abs(h.pnl))}</td>
+      <td class="mono ${h.pnlPct>=0?'up':'dn'}">${h.avg>0?pctStr(h.pnlPct):'&mdash;'}</td>
+      <td><button class="btn btn-xs btn-red" onclick="del('holdings',${S.holdings.indexOf(h)})">&#215;</button></td>
+    </tr>`).join('')
+    : '<tr><td colspan="8" style="text-align:center;color:var(--text3);font-family:var(--mono);font-size:11px;padding:24px;">No holdings. Add your first position.</td></tr>';
 }
 function filterHoldings(q){
   const ql=q.toLowerCase();
@@ -817,23 +754,23 @@ function renderSectorChart(){
   S.holdings.forEach(h=>{const s=h.sector||'Other';sm[s]=(sm[s]||0)+h.ltp*h.qty;});
   const keys=Object.keys(sm).sort((a,b)=>sm[b]-sm[a]).slice(0,8);
   const vals=keys.map(k=>sm[k]),total=vals.reduce((a,v)=>a+v,0);
-  if(_sC)_sC.destroy();
+  if(_sC){_sC.destroy();_sC=null;}
   if(keys.length){
     _sC=new Chart(document.getElementById('sectorChart'),{type:'doughnut',data:{labels:keys,datasets:[{data:vals.map(v=>Math.round(v)),backgroundColor:COLORS,borderWidth:2,borderColor:'#111520'}]},options:{responsive:true,maintainAspectRatio:false,plugins:{legend:{display:false},tooltip:{callbacks:{label:c=>' '+c.label+': '+fmt(c.raw)}}},cutout:'65%'}});
-    document.getElementById('sector-legend').innerHTML=keys.map((k,i)=>`<li><span class="d-dot" style="background:${COLORS[i]}"></span><span class="d-name">${k}</span><span class="d-val">${fmt(sm[k])}</span><span class="d-pct">${(sm[k]/total*100).toFixed(0)}%</span></li>`).join('');
+    document.getElementById('sector-legend').innerHTML=keys.map((k,i)=>`<li><span class="d-dot" style="background:${COLORS[i]}"></span><span class="d-name">${k}</span><span class="d-val">${fmt(sm[k])}</span><span class="d-pct">${total?(sm[k]/total*100).toFixed(0):0}%</span></li>`).join('');
   }
 }
 function renderMFList(){
   document.getElementById('mf-list').innerHTML = S.mf.length
     ? S.mf.map((f,i)=>`<div style="padding:12px 14px;border-bottom:1px solid var(--line);display:flex;justify-content:space-between;align-items:center;">
-        <div><div style="font-size:12px;font-weight:500;color:var(--text0);">${f.name}</div><div style="font-size:10px;font-family:var(--mono);color:var(--text2);">${f.cat} · ${f.units.toFixed(3)} units · NAV ₹${f.nav}</div><div style="font-size:10px;font-family:var(--mono);color:var(--text2);">${f.sip>0?'SIP ₹'+f.sip+'/mo':'Lumpsum'}</div></div>
-        <div style="display:flex;align-items:center;gap:8px;"><div style="text-align:right;"><div class="mono ${f.pnl>=0?'up':'dn'}" style="font-size:13px;">${f.pnl>=0?'+':''}${fmt(Math.abs(f.pnl))}</div><div class="mono ${f.pnlPct>=0?'up':'dn'}" style="font-size:11px;">${pctStr(f.pnlPct)}</div></div><button class="btn btn-xs btn-red" onclick="del('mf',${i})">×</button></div>
-      </div>`).join('')
-    : '<div class="empty"><div class="empty-icon">📈</div><div class="empty-text">No mutual funds.<br>Add your first fund.</div></div>';
+      <div><div style="font-size:12px;font-weight:500;color:var(--text0);">${f.name}</div><div style="font-size:10px;font-family:var(--mono);color:var(--text2);">${f.cat} &middot; ${f.units.toFixed(3)} units &middot; NAV \u20b9${f.nav}</div><div style="font-size:10px;font-family:var(--mono);color:var(--text2);">${f.sip>0?'SIP \u20b9'+f.sip+'/mo':'Lumpsum'}</div></div>
+      <div style="display:flex;align-items:center;gap:8px;"><div style="text-align:right;"><div class="mono ${f.pnl>=0?'up':'dn'}" style="font-size:13px;">${f.pnl>=0?'+':''}${fmt(Math.abs(f.pnl))}</div><div class="mono ${f.pnlPct>=0?'up':'dn'}" style="font-size:11px;">${pctStr(f.pnlPct)}</div></div><button class="btn btn-xs btn-red" onclick="del('mf',${i})">&#215;</button></div>
+    </div>`).join('')
+    : '<div class="empty"><div class="empty-icon">&#128200;</div><div class="empty-text">No mutual funds.<br>Add your first fund.</div></div>';
 }
 function renderMovers(){
   const valid=S.holdings.filter(h=>h.avg>0).sort((a,b)=>b.pnlPct-a.pnlPct);
-  const top=[...valid.slice(0,3),...valid.slice(-3)];
+  const top=[...valid.slice(0,3),...valid.slice(-Math.min(3,valid.length))].filter((v,i,a)=>a.indexOf(v)===i);
   document.getElementById('movers-tbody').innerHTML=top.length
     ? top.map(h=>`<tr><td class="sym">${h.sym}</td><td class="mono ${h.pnlPct>=0?'up':'dn'}">${pctStr(h.pnlPct)}</td><td class="mono ${h.pnl>=0?'up':'dn'}">${h.pnl>=0?'+':''}${fmt(Math.abs(h.pnl))}</td></tr>`).join('')
     : '<tr><td colspan="3" style="text-align:center;color:var(--text3);font-size:11px;padding:16px;">No data</td></tr>';
@@ -844,7 +781,10 @@ function addHolding(){
   const avg=+document.getElementById('h-avg').value||0, ltp=+document.getElementById('h-ltp').value||0, qty=+document.getElementById('h-qty').value||0;
   const pnl=(ltp-avg)*qty, pnlPct=avg>0?(ltp-avg)/avg*100:0;
   S.holdings.push({sym,sector:document.getElementById('h-sec').value.trim().toUpperCase(),qty,avg,ltp,pnl,pnlPct});
-  saveData();closeModal('holdingModal');renderPortfolio();toast(sym+' added ✓');
+  saveData();closeModal('holdingModal');
+  document.getElementById('h-sym').value='';document.getElementById('h-sec').value='';
+  document.getElementById('h-qty').value='';document.getElementById('h-avg').value='';document.getElementById('h-ltp').value='';
+  renderPortfolio();toast(sym+' added \u2713');
 }
 function addMF(){
   const name=document.getElementById('mf-name').value.trim();
@@ -852,12 +792,10 @@ function addMF(){
   const units=+document.getElementById('mf-u').value||0, avgNav=+document.getElementById('mf-a').value||0, nav=+document.getElementById('mf-n').value||0;
   const pnl=(nav-avgNav)*units, pnlPct=avgNav>0?(nav-avgNav)/avgNav*100:0;
   S.mf.push({name,units,avgNav,nav,cat:document.getElementById('mf-cat').value,sip:+document.getElementById('mf-sip').value||0,pnl,pnlPct});
-  saveData();closeModal('mfModal');renderPortfolio();toast('Fund added ✓');
+  saveData();closeModal('mfModal');renderPortfolio();toast('Fund added \u2713');
 }
 
-// ══════════════════════════════════
-// EXPENSES
-// ══════════════════════════════════
+// ══ EXPENSES ══
 let _bC=null;
 function renderExpenses(){
   const expenses=S.transactions.filter(t=>t.type==='expense');
@@ -872,34 +810,29 @@ function renderExpenses(){
   document.getElementById('exp-days').textContent=daysLeft+' days left';
   document.getElementById('exp-daily').textContent=fmt(daily);
   document.getElementById('exp-count').textContent=expenses.length;
-
-  // Transactions
+  if(S.budget) document.getElementById('budget-inp').value=S.budget;
   document.getElementById('txn-list').innerHTML=S.transactions.length
     ? S.transactions.map((t,i)=>`<div class="txn-item">
-        <div class="txn-icon" style="background:${t.type==='income'?'var(--green-dim)':'var(--bg3)'};">${t.cat.split(' ')[0]}</div>
-        <div class="txn-desc"><div class="txn-name">${t.desc}</div><div class="txn-cat">${t.cat.replace(/.*?\s/,'')} · ${t.date}</div></div>
-        <div class="txn-amount ${t.type==='income'?'up':'dn'}">${t.type==='income'?'+':'−'}${fmt(t.amount)}</div>
-        <button class="txn-del" onclick="del('transactions',${i})">×</button>
-      </div>`).join('')
-    : '<div class="empty"><div class="empty-icon">💳</div><div class="empty-text">No transactions yet.<br>Tap + Add to get started.</div></div>';
-
-  // Categories
+      <div class="txn-icon" style="background:${t.type==='income'?'var(--green-dim)':'var(--bg3)'};">${t.cat.split(' ')[0]}</div>
+      <div class="txn-desc"><div class="txn-name">${t.desc}</div><div class="txn-cat">${t.cat.replace(/\S+\s/,'')} &middot; ${t.date}</div></div>
+      <div class="txn-amount ${t.type==='income'?'up':'dn'}">${t.type==='income'?'+':'\u2212'}${fmt(t.amount)}</div>
+      <button class="txn-del" onclick="del('transactions',${i})">&#215;</button>
+    </div>`).join('')
+    : '<div class="empty"><div class="empty-icon">&#128179;</div><div class="empty-text">No transactions yet.<br>Tap + Add to get started.</div></div>';
   const cats={};
-  expenses.forEach(t=>{const k=t.cat.replace(/.*?\s/,'');cats[k]=(cats[k]||0)+t.amount;});
+  expenses.forEach(t=>{const k=t.cat.replace(/\S+\s/,'');cats[k]=(cats[k]||0)+t.amount;});
   const arr=Object.entries(cats).sort((a,b)=>b[1]-a[1]);
   document.getElementById('cat-list').innerHTML=arr.length
     ? arr.map(([cat,val],i)=>`<div style="display:flex;align-items:center;gap:8px;padding:8px 0;border-bottom:1px solid var(--line);">
-        <span style="width:8px;height:8px;border-radius:50%;background:${COLORS[i]};flex-shrink:0;"></span>
-        <span style="flex:1;font-size:12px;color:var(--text1);">${cat}</span>
-        <div style="width:80px;height:3px;background:var(--bg4);border-radius:1px;overflow:hidden;"><div style="width:${total?val/total*100:0}%;height:100%;background:${COLORS[i]};border-radius:1px;"></div></div>
-        <span style="font-family:var(--mono);font-size:11px;color:var(--text2);width:34px;text-align:right;">${total?(val/total*100).toFixed(0):0}%</span>
-        <span style="font-family:var(--mono);font-size:11px;color:var(--text0);width:70px;text-align:right;">${fmt(val)}</span>
-      </div>`).join('')
+      <span style="width:8px;height:8px;border-radius:50%;background:${COLORS[i]};flex-shrink:0;"></span>
+      <span style="flex:1;font-size:12px;color:var(--text1);">${cat}</span>
+      <div style="width:80px;height:3px;background:var(--bg4);border-radius:1px;overflow:hidden;"><div style="width:${total?val/total*100:0}%;height:100%;background:${COLORS[i]};border-radius:1px;"></div></div>
+      <span style="font-family:var(--mono);font-size:11px;color:var(--text2);width:34px;text-align:right;">${total?(val/total*100).toFixed(0):0}%</span>
+      <span style="font-family:var(--mono);font-size:11px;color:var(--text0);width:70px;text-align:right;">${fmt(val)}</span>
+    </div>`).join('')
     : '<div style="color:var(--text3);font-family:var(--mono);font-size:11px;text-align:center;padding:16px;">Add expenses to see breakdown</div>';
-
-  // Budget donut
-  const spent=Math.min(total,S.budget||0),rem=Math.max(0,(S.budget||0)-total),over=Math.max(0,total-(S.budget||0));
-  if(_bC)_bC.destroy();
+  const spent=Math.min(total,S.budget||total||1),rem=Math.max(0,(S.budget||0)-total),over=Math.max(0,total-(S.budget||0));
+  if(_bC){_bC.destroy();_bC=null;}
   if(S.budget){
     _bC=new Chart(document.getElementById('budgetDonut'),{type:'doughnut',data:{labels:['Spent','Remaining','Over Budget'],datasets:[{data:[spent,rem,over],backgroundColor:['#e8304a','#1db87a','#e8a020'],borderWidth:2,borderColor:'#111520'}]},options:{responsive:true,maintainAspectRatio:false,plugins:{legend:{display:false}},cutout:'72%'}});
   }
@@ -908,12 +841,12 @@ function addTxn(){
   const desc=document.getElementById('t-desc').value.trim();
   if(!desc){toast('Description required','error');return;}
   S.transactions.unshift({desc,cat:document.getElementById('t-cat').value,amount:+document.getElementById('t-amt').value||0,type:document.getElementById('t-type').value,date:document.getElementById('t-date').value||new Date().toISOString().slice(0,10)});
-  saveData();closeModal('txnModal');renderExpenses();toast('Transaction added ✓');
+  saveData();closeModal('txnModal');
+  document.getElementById('t-desc').value='';document.getElementById('t-amt').value='';
+  renderExpenses();toast('Transaction added \u2713');
 }
 
-// ══════════════════════════════════
-// GOALS
-// ══════════════════════════════════
+// ══ GOALS ══
 let _gC=null;
 function renderGoals(){
   const totalT=S.goals.reduce((s,g)=>s+g.target,0);
@@ -923,53 +856,52 @@ function renderGoals(){
   document.getElementById('g-target').textContent=fmt(totalT);
   document.getElementById('g-saved').textContent=fmt(totalS);
   document.getElementById('g-sip').textContent=fmt(totalSIP);
-
   const pColors={high:COLORS[3],medium:COLORS[0],low:COLORS[2]};
   document.getElementById('goals-list').innerHTML=S.goals.length
     ? S.goals.map((g,i)=>{
         const p=Math.min(100,(g.saved/g.target*100));
         return `<div class="goal-card">
           <div style="display:flex;justify-content:space-between;align-items:flex-start;">
-            <div><div class="goal-name">${g.name}</div><div class="goal-meta">Target: ${g.year} · ${g.priority.toUpperCase()}</div></div>
+            <div><div class="goal-name">${g.name}</div><div class="goal-meta">Target: ${g.year} &middot; ${g.priority.toUpperCase()}</div></div>
             <div style="display:flex;align-items:center;gap:8px;">
               <div style="text-align:right;"><div style="font-family:var(--mono);font-size:13px;">${fmt(g.saved)}</div><div style="font-size:10px;color:var(--text2);font-family:var(--mono);">of ${fmt(g.target)}</div></div>
-              <button class="btn btn-xs btn-red" onclick="del('goals',${i})">×</button>
+              <button class="btn btn-xs btn-red" onclick="del('goals',${i})">&#215;</button>
             </div>
           </div>
           <div class="goal-bar"><div class="goal-fill" style="width:${p}%;background:${pColors[g.priority]||COLORS[0]};"></div></div>
           <div class="goal-nums"><span>${p.toFixed(1)}% done</span><span>${fmt(g.target-g.saved)} left</span></div>
         </div>`;
       }).join('')
-    : '<div class="empty"><div class="empty-icon">🎯</div><div class="empty-text">No goals yet.<br>Add your first financial goal.</div></div>';
-
+    : '<div class="empty"><div class="empty-icon">&#127919;</div><div class="empty-text">No goals yet.<br>Add your first financial goal.</div></div>';
   document.getElementById('sip-list').innerHTML=S.sips.length
     ? S.sips.map((s,i)=>`<div style="display:flex;align-items:center;justify-content:space-between;padding:10px 14px;border-bottom:1px solid var(--line);">
-        <div><div style="font-size:12px;font-weight:500;">${s.name}</div><div style="font-size:10px;font-family:var(--mono);color:var(--text2);">Since ${s.date}</div></div>
-        <div style="display:flex;align-items:center;gap:8px;"><span class="mono up" style="font-size:13px;">₹${s.amount.toLocaleString()}/mo</span><button class="btn btn-xs btn-red" onclick="del('sips',${i})">×</button></div>
-      </div>`).join('')
+      <div><div style="font-size:12px;font-weight:500;">${s.name}</div><div style="font-size:10px;font-family:var(--mono);color:var(--text2);">Since ${s.date}</div></div>
+      <div style="display:flex;align-items:center;gap:8px;"><span class="mono up" style="font-size:13px;">\u20b9${s.amount.toLocaleString()}/mo</span><button class="btn btn-xs btn-red" onclick="del('sips',${i})">&#215;</button></div>
+    </div>`).join('')
     : '<div style="padding:16px;color:var(--text3);font-family:var(--mono);font-size:11px;text-align:center;">No SIPs added</div>';
-
-  if(_gC)_gC.destroy();
+  if(_gC){_gC.destroy();_gC=null;}
   if(S.goals.length){
-    _gC=new Chart(document.getElementById('goalsChart'),{type:'bar',data:{labels:S.goals.map(g=>g.name),datasets:[{label:'Saved',data:S.goals.map(g=>g.saved),backgroundColor:'#1db87a',borderRadius:3,stack:'a'},{label:'Remaining',data:S.goals.map(g=>g.target-g.saved),backgroundColor:'#1c2235',borderRadius:3,stack:'a'}]},options:{responsive:true,maintainAspectRatio:false,plugins:{legend:{display:false},tooltip:{callbacks:{label:c=>' '+c.dataset.label+': '+fmt(c.raw)}}},scales:{x:{ticks:{color:'#6e7a96',font:{size:9}},grid:{display:false}},y:{ticks:{color:'#6e7a96',callback:v=>fmt(v)},grid:{color:'rgba(255,255,255,0.04)'}}}}});
+    _gC=new Chart(document.getElementById('goalsChart'),{type:'bar',data:{labels:S.goals.map(g=>g.name),datasets:[{label:'Saved',data:S.goals.map(g=>g.saved),backgroundColor:'#1db87a',borderRadius:3,stack:'a'},{label:'Remaining',data:S.goals.map(g=>Math.max(0,g.target-g.saved)),backgroundColor:'#1c2235',borderRadius:3,stack:'a'}]},options:{responsive:true,maintainAspectRatio:false,plugins:{legend:{display:false},tooltip:{callbacks:{label:c=>' '+c.dataset.label+': '+fmt(c.raw)}}},scales:{x:{ticks:{color:'#6e7a96',font:{size:9}},grid:{display:false}},y:{ticks:{color:'#6e7a96',callback:v=>fmt(v)},grid:{color:'rgba(255,255,255,0.04)'}}}}});
   }
 }
 function addGoal(){
   const name=document.getElementById('g-name').value.trim();
   if(!name){toast('Name required','error');return;}
-  S.goals.push({name,target:+document.getElementById('g-tgt').value||0,saved:+document.getElementById('g-saved').value||0,year:+document.getElementById('g-yr').value||2030,priority:document.getElementById('g-pri').value});
-  saveData();closeModal('goalModal');renderGoals();toast('Goal added ✓');
+  S.goals.push({name,target:+document.getElementById('g-tgt').value||0,saved:+document.getElementById('g-saved-inp').value||0,year:+document.getElementById('g-yr').value||2030,priority:document.getElementById('g-pri').value});
+  saveData();closeModal('goalModal');
+  document.getElementById('g-name').value='';document.getElementById('g-tgt').value='';document.getElementById('g-saved-inp').value='';
+  renderGoals();toast('Goal added \u2713');
 }
 function addSIP(){
   const name=document.getElementById('s-name').value.trim();
   if(!name){toast('Fund name required','error');return;}
   S.sips.push({name,amount:+document.getElementById('s-amt').value||0,date:document.getElementById('s-date').value});
-  saveData();closeModal('sipModal');renderGoals();toast('SIP added ✓');
+  saveData();closeModal('sipModal');
+  document.getElementById('s-name').value='';document.getElementById('s-amt').value='';
+  renderGoals();toast('SIP added \u2713');
 }
 
-// ══════════════════════════════════
-// DELETE
-// ══════════════════════════════════
+// ══ DELETE ══
 function del(type,idx){
   if(!confirm('Remove this entry?'))return;
   S[type].splice(idx,1);saveData();
@@ -980,9 +912,7 @@ function del(type,idx){
   toast('Removed','success');
 }
 
-// ══════════════════════════════════
-// CALCULATORS
-// ══════════════════════════════════
+// ══ CALCULATORS ══
 let _sipC=null;
 function calcSIP(){
   const P=+document.getElementById('sip-amt').value||5000;
@@ -992,182 +922,166 @@ function calcSIP(){
   const inv=P*n;
   document.getElementById('sip-corpus').textContent=fmt(corpus);
   document.getElementById('sip-inv').textContent=fmt(inv);
-  document.getElementById('sip-gain').textContent='+'+fmt(corpus-inv);
-  document.getElementById('sip-mult').textContent=(corpus/inv).toFixed(1)+'×';
-  const yrs=+document.getElementById('sip-y').value,labels=[],invA=[],corpA=[];
-  for(let y=0;y<=yrs;y++){const nn=y*12;const c=r>0?P*((Math.pow(1+r,nn)-1)/r)*(1+r):P*nn;labels.push(y===0?'Now':y+'yr');invA.push(Math.round(P*nn));corpA.push(Math.round(c));}
-  if(_sipC)_sipC.destroy();
-  _sipC=new Chart(document.getElementById('sipChart'),{type:'line',data:{labels,datasets:[{label:'Corpus',data:corpA,borderColor:'#e8a020',backgroundColor:'rgba(232,160,32,.1)',fill:true,tension:.4,borderWidth:2,pointRadius:0},{label:'Invested',data:invA,borderColor:'#2d7ef5',backgroundColor:'rgba(45,126,245,.05)',fill:true,tension:.4,borderWidth:1.5,pointRadius:0,borderDash:[4,4]}]},options:{responsive:true,maintainAspectRatio:false,plugins:{legend:{display:false},tooltip:{callbacks:{label:c=>' '+c.dataset.label+': '+fmt(c.raw)}}},scales:{x:{ticks:{color:'#6e7a96',maxTicksLimit:6,font:{size:9}},grid:{display:false}},y:{ticks:{color:'#6e7a96',callback:v=>fmt(v),font:{size:9}},grid:{color:'rgba(255,255,255,0.04)'}}}}});
+  document.getElementById('sip-gain').textContent=fmt(corpus-inv);
+  document.getElementById('sip-mult').textContent=(inv>0?(corpus/inv).toFixed(1):0)+'\u00d7';
+  if(_sipC){_sipC.destroy();_sipC=null;}
+  const yrs=+document.getElementById('sip-y').value;
+  const labels=[],invData=[],corpData=[];
+  for(let y=1;y<=yrs;y++){
+    const ny=y*12;
+    const c=r>0?P*((Math.pow(1+r,ny)-1)/r)*(1+r):P*ny;
+    labels.push(y+'y');invData.push(Math.round(P*ny));corpData.push(Math.round(c));
+  }
+  _sipC=new Chart(document.getElementById('sipChart'),{type:'line',data:{labels,datasets:[{label:'Corpus',data:corpData,borderColor:'#e8a020',backgroundColor:'rgba(232,160,32,0.1)',fill:true,tension:0.4,pointRadius:0},{label:'Invested',data:invData,borderColor:'#2d7ef5',backgroundColor:'transparent',borderDash:[4,4],tension:0.4,pointRadius:0}]},options:{responsive:true,maintainAspectRatio:false,plugins:{legend:{display:false}},scales:{x:{ticks:{color:'#6e7a96',font:{size:9}},grid:{display:false}},y:{ticks:{color:'#6e7a96',callback:v=>fmt(v),font:{size:9}},grid:{color:'rgba(255,255,255,0.04)'}}}}});
 }
 function calcLS(){
   const P=+document.getElementById('ls-p').value||100000;
   const r=+document.getElementById('ls-r').value/100;
-  const n=+document.getElementById('ls-y').value;
-  const fv=P*Math.pow(1+r,n);
+  const y=+document.getElementById('ls-y').value||10;
+  const fv=P*Math.pow(1+r,y);
   document.getElementById('ls-fv').textContent=fmt(fv);
-  document.getElementById('ls-gain').textContent='+'+fmt(fv-P);
-  document.getElementById('ls-cagr').textContent=r*100+'% p.a.';
+  document.getElementById('ls-gain').textContent=fmt(fv-P);
+  document.getElementById('ls-cagr').textContent=r*100+'%';
 }
 function calcGoalSIP(){
-  const FV=+document.getElementById('gp-t').value||1000000;
+  const T=+document.getElementById('gp-t').value||1000000;
+  const y=+document.getElementById('gp-y').value||10;
   const r=+document.getElementById('gp-r').value/100/12;
-  const n=+document.getElementById('gp-y').value*12;
-  const sip=r>0?FV*r/((Math.pow(1+r,n)-1)*(1+r)):FV/n;
+  const n=y*12;
+  const sip=r>0?T*r/(Math.pow(1+r,n)-1)/(1+r):T/n;
   const inv=sip*n;
   document.getElementById('gp-sip').textContent=fmt(sip);
   document.getElementById('gp-inv').textContent=fmt(inv);
-  document.getElementById('gp-w').textContent='+'+fmt(FV-inv);
+  document.getElementById('gp-w').textContent=fmt(T-inv);
 }
 
-// ══════════════════════════════════
-// IMPORT / EXPORT
-// ══════════════════════════════════
+// ══ DATA MANAGER ══
 function exportJSON(){
   const blob=new Blob([JSON.stringify(S,null,2)],{type:'application/json'});
-  dl(blob,'meridian-backup-'+new Date().toISOString().slice(0,10)+'.json');
-  toast('Backup exported ✓');
+  const a=document.createElement('a');a.href=URL.createObjectURL(blob);
+  a.download='meridian-backup-'+new Date().toISOString().slice(0,10)+'.json';a.click();
+  toast('Data exported \u2713');
 }
 function exportCSV(type){
   let csv='',rows=[];
   if(type==='holdings'){
-    csv='Symbol,Sector,Qty,Avg Price,LTP,PnL,PnL%\n';
-    rows=S.holdings.map(h=>`${h.sym},${h.sector},${h.qty},${h.avg},${h.ltp},${h.pnl.toFixed(2)},${h.pnlPct.toFixed(2)}`);
+    csv='Symbol,Sector,Qty,Avg Price,LTP,P&L,P&L%\n';
+    rows=S.holdings.map(h=>`${h.sym},${h.sector||''},${h.qty},${h.avg},${h.ltp},${h.pnl.toFixed(2)},${h.pnlPct.toFixed(2)}`);
   } else {
-    csv='Description,Category,Amount,Type,Date\n';
-    rows=S.transactions.map(t=>`"${t.desc}","${t.cat}",${t.amount},${t.type},${t.date}`);
+    csv='Date,Description,Category,Amount,Type\n';
+    rows=S.transactions.map(t=>`${t.date},"${t.desc}","${t.cat}",${t.amount},${t.type}`);
   }
-  dl(new Blob([csv+rows.join('\n')],{type:'text/csv'}),'meridian-'+type+'-'+new Date().toISOString().slice(0,10)+'.csv');
-  toast('CSV exported ✓');
+  const blob=new Blob([csv+rows.join('\n')],{type:'text/csv'});
+  const a=document.createElement('a');a.href=URL.createObjectURL(blob);
+  a.download='meridian-'+type+'-'+new Date().toISOString().slice(0,10)+'.csv';a.click();
+  toast(type+' exported \u2713');
 }
 function downloadTemplate(type){
   const templates={
-    holdings:'Symbol,Sector,Qty,Avg Price,LTP\nRELIANCE,ENERGY,10,2500,2800\nICICIBANK,FINANCIAL SERVICES,5,875,1384',
-    transactions:'Description,Category,Amount,Type,Date\nSwiggy,🍔 Food,450,expense,2026-03-29\nSalary,📦 Other,75000,income,2026-03-25',
-    goals:'Name,Target,Saved,Year,Priority\nEmergency Fund,300000,150000,2026,high\nHouse Down Payment,1500000,200000,2028,medium'
+    holdings:'Symbol,Sector,Qty,Avg Price,LTP\nRELIANCE,ENERGY,10,2500,2800\n',
+    transactions:'Date,Description,Category,Amount,Type\n2024-01-01,Zomato,Food,450,expense\n',
+    goals:'Name,Target,Saved,Year,Priority\nEmergency Fund,300000,50000,2025,high\n'
   };
-  dl(new Blob([templates[type]],{type:'text/csv'}),'meridian-'+type+'-template.csv');
-  toast('Template downloaded ✓');
+  const blob=new Blob([templates[type]],{type:'text/csv'});
+  const a=document.createElement('a');a.href=URL.createObjectURL(blob);
+  a.download='meridian-template-'+type+'.csv';a.click();
+  toast('Template downloaded \u2713');
 }
-function dl(blob,name){
-  const a=document.createElement('a');a.href=URL.createObjectURL(blob);a.download=name;a.click();URL.revokeObjectURL(a.href);
-}
-function importJSON(e){
-  const file=e.target.files[0];if(!file)return;
-  const r=new FileReader();
-  r.onload=ev=>{
+function importJSON(event){
+  const file=event.target.files[0];if(!file)return;
+  const reader=new FileReader();
+  reader.onload=e=>{
     try{
-      const d=JSON.parse(ev.target.result);
-      if(d.holdings||d.assets||d.transactions){
-        Object.assign(S,d);saveData();
-        toast('Data restored ✓');
-        nav('networth');
-      } else toast('Invalid file format','error');
-    }catch(err){toast('Could not parse file','error');}
+      const data=JSON.parse(e.target.result);
+      if(!data.assets&&!data.holdings&&!data.transactions){toast('Invalid backup file','error');return;}
+      S={...DEFAULT_STATE,...data};saveData();
+      toast('Data restored \u2713');
+      nav('networth');
+    }catch(err){toast('Invalid JSON file','error');}
   };
-  r.readAsText(file);e.target.value='';
+  reader.readAsText(file);
+  event.target.value='';
 }
-function importCSV(e){
-  const file=e.target.files[0];if(!file)return;
+function importCSV(event){
+  const file=event.target.files[0];if(!file)return;
   const type=document.getElementById('csv-type').value;
-  const r=new FileReader();
-  r.onload=ev=>{
-    const lines=ev.target.result.trim().split('\n').slice(1).filter(l=>l.trim());
+  const reader=new FileReader();
+  reader.onload=e=>{
+    const lines=e.target.result.split('\n').filter(l=>l.trim());
+    if(lines.length<2){toast('Empty file','error');return;}
+    const headers=lines[0].split(',').map(h=>h.trim().toLowerCase().replace(/[^a-z0-9]/g,''));
     let count=0;
-    lines.forEach(line=>{
-      const cols=line.split(',').map(c=>c.replace(/^"|"$/g,'').trim());
-      if(type==='holdings'&&cols[0]){
-        const avg=+cols[3]||0,ltp=+cols[4]||0,qty=+cols[2]||0;
-        S.holdings.push({sym:cols[0].toUpperCase(),sector:(cols[1]||'').toUpperCase(),qty,avg,ltp,pnl:(ltp-avg)*qty,pnlPct:avg>0?(ltp-avg)/avg*100:0});
-        count++;
-      } else if(type==='transactions'&&cols[0]){
-        S.transactions.push({desc:cols[0],cat:cols[1]||'📦 Other',amount:+cols[2]||0,type:cols[3]||'expense',date:cols[4]||new Date().toISOString().slice(0,10)});
-        count++;
-      } else if(type==='goals'&&cols[0]){
-        S.goals.push({name:cols[0],target:+cols[1]||0,saved:+cols[2]||0,year:+cols[3]||2030,priority:cols[4]||'medium'});
-        count++;
-      }
-    });
-    saveData();toast(count+' rows imported ✓');nav('portfolio');
+    for(let i=1;i<lines.length;i++){
+      const vals=lines[i].split(',').map(v=>v.trim().replace(/^"|"$/g,''));
+      if(vals.length<3)continue;
+      try{
+        if(type==='holdings'){
+          const sym=(vals[0]||'').toUpperCase(),sector=(vals[1]||'').toUpperCase(),qty=+vals[2]||0,avg=+vals[3]||0,ltp=+vals[4]||0;
+          if(!sym)continue;
+          const pnl=(ltp-avg)*qty,pnlPct=avg>0?(ltp-avg)/avg*100:0;
+          S.holdings.push({sym,sector,qty,avg,ltp,pnl,pnlPct});count++;
+        } else if(type==='transactions'){
+          const date=vals[0],desc=vals[1],cat=vals[2],amount=+vals[3]||0,txnType=vals[4]||'expense';
+          if(!desc)continue;
+          S.transactions.push({date,desc,cat,amount,type:txnType});count++;
+        } else if(type==='goals'){
+          const name=vals[0],target=+vals[1]||0,saved=+vals[2]||0,year=+vals[3]||2030,priority=vals[4]||'medium';
+          if(!name)continue;
+          S.goals.push({name,target,saved,year,priority});count++;
+        }
+      }catch(ex){}
+    }
+    saveData();toast(count+' rows imported \u2713');
+    event.target.value='';
   };
-  r.readAsText(file);e.target.value='';
+  reader.readAsText(file);
 }
-function importKiteCSV(e){
-  const file=e.target.files[0];if(!file)return;
-  const r=new FileReader();
-  r.onload=ev=>{
-    const lines=ev.target.result.trim().split('\n');
-    let headerIdx=-1;
-    lines.forEach((l,i)=>{if(l.toLowerCase().includes('symbol')&&l.toLowerCase().includes('quantity'))headerIdx=i;});
-    if(headerIdx<0){toast('Could not detect Kite format','error');return;}
-    const header=lines[headerIdx].split(',').map(h=>h.trim().toLowerCase().replace(/"/g,''));
-    const symIdx=header.findIndex(h=>h.includes('symbol'));
-    const qtyIdx=header.findIndex(h=>h.includes('quantity'));
-    const avgIdx=header.findIndex(h=>h.includes('average'));
-    const ltpIdx=header.findIndex(h=>h.includes('last')||h.includes('ltp')||h.includes('closing'));
-    const secIdx=header.findIndex(h=>h.includes('sector'));
+function importKiteCSV(event){
+  const file=event.target.files[0];if(!file)return;
+  const reader=new FileReader();
+  reader.onload=e=>{
+    const lines=e.target.result.split('\n').filter(l=>l.trim());
+    if(lines.length<2){toast('Empty file','error');return;}
     let count=0;
-    lines.slice(headerIdx+1).forEach(line=>{
-      const cols=line.split(',').map(c=>c.replace(/^"|"$/g,'').trim());
-      if(!cols[symIdx])return;
-      const sym=cols[symIdx].toUpperCase();
-      const qty=+cols[qtyIdx]||0,avg=+cols[avgIdx]||0,ltp=+cols[ltpIdx]||0;
-      const sector=secIdx>=0?cols[secIdx].toUpperCase():'';
-      if(sym&&qty){
-        S.holdings.push({sym,sector,qty,avg,ltp,pnl:(ltp-avg)*qty,pnlPct:avg>0?(ltp-avg)/avg*100:0});
-        count++;
-      }
-    });
-    saveData();toast(count+' holdings imported from Kite ✓');nav('portfolio');
+    for(let i=1;i<lines.length;i++){
+      const cols=lines[i].split(',').map(v=>v.trim().replace(/^"|"$/g,''));
+      if(cols.length<5)continue;
+      const sym=(cols[0]||'').toUpperCase();
+      if(!sym)continue;
+      const qty=+cols[1]||+cols[3]||0;
+      const avg=+cols[2]||+cols[4]||0;
+      const ltp=+cols[5]||avg;
+      const pnl=(ltp-avg)*qty,pnlPct=avg>0?(ltp-avg)/avg*100:0;
+      S.holdings.push({sym,sector:'',qty,avg,ltp,pnl,pnlPct});count++;
+    }
+    saveData();toast(count+' holdings imported \u2713');
+    event.target.value='';
   };
-  r.readAsText(file);e.target.value='';
+  reader.readAsText(file);
 }
 function clearSection(type){
-  if(!confirm(`Clear all ${type==='all'?'data':type}? This cannot be undone.`))return;
-  if(type==='all'){Object.assign(S,{...DEFAULT_STATE});document.getElementById('inc-sal').value='';document.getElementById('inc-other').value='';document.getElementById('exp-fix').value='';document.getElementById('exp-var').value='';}
-  else if(type==='holdings')S.holdings=[];
-  else if(type==='transactions')S.transactions=[];
-  else if(type==='goals'){S.goals=[];S.sips=[];}
-  saveData();toast('Cleared ✓');nav('networth');
+  const labels={holdings:'all holdings',transactions:'all transactions',goals:'all goals',all:'EVERYTHING'};
+  if(!confirm('Are you sure you want to clear '+labels[type]+'? This cannot be undone.'))return;
+  if(type==='all'){S={...DEFAULT_STATE};} else {S[type]=[];}
+  saveData();toast('Cleared','success');
+  nav('networth');
 }
 
-// ══════════════════════════════════
-// MODALS
-// ══════════════════════════════════
-function openModal(id){document.getElementById(id).classList.add('open');}
-function closeModal(id){document.getElementById(id).classList.remove('open');}
-document.querySelectorAll('.overlay').forEach(o=>o.addEventListener('click',function(e){if(e.target===this)this.classList.remove('open');}));
-
-// ══════════════════════════════════
-// SERVICE WORKER
-// ══════════════════════════════════
+// ══ SERVICE WORKER ══
 if('serviceWorker' in navigator){
   window.addEventListener('load',()=>{
-    navigator.serviceWorker.register('./sw.js').catch(()=>{});
+    navigator.serviceWorker.register('./sw.js')
+      .then(()=>console.log('MERIDIAN SW registered'))
+      .catch(e=>console.warn('SW registration failed:',e));
   });
 }
 
-// ══════════════════════════════════
-// INIT
-// ══════════════════════════════════
-window.addEventListener('DOMContentLoaded',()=>{
-  buildTicker();
-  const d=new Date();
-  document.getElementById('topbar-date').textContent=d.toLocaleDateString('en-IN',{day:'2-digit',month:'short',year:'numeric'}).toUpperCase();
-  // Restore profile inputs
-  if(S.profile){
-    document.getElementById('inc-sal').value=S.profile.salary||'';
-    document.getElementById('inc-other').value=S.profile.otherIncome||'';
-    document.getElementById('exp-fix').value=S.profile.fixedExp||'';
-    document.getElementById('exp-var').value=S.profile.varExp||'';
-  }
-  if(S.budget) document.getElementById('budget-inp').value=S.budget;
-  // Set date inputs
-  const today=new Date().toISOString().slice(0,10);
-  document.getElementById('t-date').value=today;
-  document.getElementById('s-date').value=today;
-  renderNW();drawGauge();
-  calcSIP();calcLS();calcGoalSIP();
-});
+// ══ INIT ══
+renderNW();
+drawGauge();
+calcSIP();
+calcLS();
+calcGoalSIP();
 </script>
 </body>
 </html>
